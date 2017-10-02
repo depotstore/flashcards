@@ -4,7 +4,6 @@ class CardsController < ApplicationController
     @cards = Card.all
   end
 
-  def show
-  end
-  
+  def show; end
+
 end
