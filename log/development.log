@@ -436,3 +436,622 @@ Processing by StaticPagesController#index as HTML
 Completed 200 OK in 13ms (Views: 11.6ms)
 
 
+  [1m[35m (49.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (21.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3398057808263811105)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateCards (20171001194703)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "cards" ("id" bigserial primary key, "original_text" character varying, "translated_text" character varying, "review_date" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171001194703"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-10-01 20:21:35.874096"], ["updated_at", "2017-10-01 20:21:35.874096"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(3398057808263811105)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "cards" ("original_text", "translated_text", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["original_text", "shape"], ["translated_text", "форма"], ["created_at", "2017-10-01 20:49:25.658972"], ["updated_at", "2017-10-01 20:49:25.658972"]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "cards" ("original_text", "translated_text", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["original_text", "square"], ["translated_text", "квадрат"], ["created_at", "2017-10-01 20:50:33.842574"], ["updated_at", "2017-10-01 20:50:33.842574"]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "cards" ("original_text", "translated_text", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["original_text", "rectangle"], ["translated_text", "прямоугольник"], ["created_at", "2017-10-01 20:51:41.992013"], ["updated_at", "2017-10-01 20:51:41.992013"]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "cards" ("original_text", "translated_text", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["original_text", "trapezoid"], ["translated_text", "трапеция"], ["created_at", "2017-10-01 20:52:39.462140"], ["updated_at", "2017-10-01 20:52:39.462140"]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "cards" ("original_text", "translated_text", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["original_text", "rhombus"], ["translated_text", "ромб"], ["created_at", "2017-10-01 20:53:41.876756"], ["updated_at", "2017-10-01 20:53:41.876756"]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "cards" ("original_text", "translated_text", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["original_text", "rhomboid"], ["translated_text", "ромбоид"], ["created_at", "2017-10-01 20:56:51.399167"], ["updated_at", "2017-10-01 20:56:51.399167"]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "cards" ("original_text", "translated_text", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["original_text", "parallelogram"], ["translated_text", "параллелограмм"], ["created_at", "2017-10-01 20:57:25.862291"], ["updated_at", "2017-10-01 20:57:25.862291"]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "cards" ("original_text", "translated_text", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["original_text", "trapezium"], ["translated_text", "трапеция"], ["created_at", "2017-10-01 21:00:09.657386"], ["updated_at", "2017-10-01 21:00:09.657386"]]
+  [1m[35m (6.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "cards" ("original_text", "translated_text", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["original_text", "quadrilateral"], ["translated_text", "четырёхугольник"], ["created_at", "2017-10-01 21:01:55.069543"], ["updated_at", "2017-10-01 21:01:55.069543"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "cards"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "cards"[0m
+Started GET "/" for 127.0.0.1 at 2017-10-02 00:09:02 +0300
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 368ms (Views: 358.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-02 00:09:04 +0300
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 16ms (Views: 13.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-02 00:09:06 +0300
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-02 00:11:14 +0300
+Started GET "/" for 127.0.0.1 at 2017-10-02 00:11:24 +0300
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 17ms (Views: 14.4ms | ActiveRecord: 0.0ms)
+
+
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 16ms (Views: 14.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-02 00:12:09 +0300
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 38ms (Views: 34.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-02 00:12:11 +0300
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 20ms (Views: 17.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-02 00:12:16 +0300
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 16ms (Views: 14.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/static_pages/home" for 127.0.0.1 at 2017-10-02 00:12:27 +0300
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 17ms (Views: 15.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-02 00:12:33 +0300
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 18ms (Views: 16.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-02 00:24:50 +0300
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 80ms (Views: 78.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cards" for 127.0.0.1 at 2017-10-02 00:24:52 +0300
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (3.7ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (21.4ms)
+Completed 200 OK in 51ms (Views: 38.0ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/cards" for 127.0.0.1 at 2017-10-02 00:28:03 +0300
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (3.7ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 28ms (Views: 21.6ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/cards" for 127.0.0.1 at 2017-10-02 00:29:10 +0300
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 23ms (Views: 20.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/cards" for 127.0.0.1 at 2017-10-02 00:29:26 +0300
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 20ms (Views: 14.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/cards" for 127.0.0.1 at 2017-10-02 00:31:26 +0300
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.3ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 22ms (Views: 18.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/cards" for 127.0.0.1 at 2017-10-02 00:32:02 +0300
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 18ms (Views: 15.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/cards" for 127.0.0.1 at 2017-10-02 00:32:25 +0300
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.3ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 21ms (Views: 18.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/cards" for 127.0.0.1 at 2017-10-02 00:33:22 +0300
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 21ms (Views: 19.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-02 00:33:24 +0300
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 19ms (Views: 16.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-02 00:33:25 +0300
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 19ms (Views: 17.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-02 00:33:26 +0300
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 19ms (Views: 16.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-02 00:33:27 +0300
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 20ms (Views: 17.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-02 00:33:27 +0300
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 20ms (Views: 18.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-02 00:33:27 +0300
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 20ms (Views: 18.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cards" for 127.0.0.1 at 2017-10-02 00:33:30 +0300
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 26ms (Views: 23.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/cards" for 127.0.0.1 at 2017-10-02 00:37:02 +0300
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 21ms (Views: 18.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-02 00:37:05 +0300
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 18ms (Views: 16.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cards" for 127.0.0.1 at 2017-10-02 00:37:13 +0300
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 23ms (Views: 20.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-02 00:37:14 +0300
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 21ms (Views: 18.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-02 00:37:46 +0300
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 19ms (Views: 17.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cards" for 127.0.0.1 at 2017-10-02 00:37:48 +0300
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.3ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 22ms (Views: 19.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-02 00:37:50 +0300
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 20ms (Views: 17.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cards" for 127.0.0.1 at 2017-10-02 00:38:18 +0300
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 24ms (Views: 21.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-02 00:38:20 +0300
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 21ms (Views: 17.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cards" for 127.0.0.1 at 2017-10-02 00:38:21 +0300
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 24ms (Views: 21.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-02 00:38:23 +0300
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 20ms (Views: 16.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-02 00:38:28 +0300
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 24ms (Views: 21.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-02 00:38:29 +0300
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 22ms (Views: 18.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-02 00:38:30 +0300
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 20ms (Views: 17.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-02 00:38:30 +0300
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 19ms (Views: 16.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-02 00:39:14 +0300
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 36ms (Views: 32.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-02 00:39:15 +0300
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 19ms (Views: 16.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cards" for 127.0.0.1 at 2017-10-02 00:39:18 +0300
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.3ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 23ms (Views: 18.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-02 00:39:21 +0300
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 20ms (Views: 17.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cards" for 127.0.0.1 at 2017-10-02 00:39:24 +0300
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 22ms (Views: 19.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-02 00:39:26 +0300
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 20ms (Views: 17.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cards" for 127.0.0.1 at 2017-10-02 00:40:20 +0300
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.5ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 24ms (Views: 21.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/cards" for 127.0.0.1 at 2017-10-02 00:41:03 +0300
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.4ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 21ms (Views: 18.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/cards" for 127.0.0.1 at 2017-10-02 00:41:15 +0300
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 24ms (Views: 22.0ms | ActiveRecord: 0.2ms)
+
+
+  [1m[36mCard Load (4.4ms)[0m  [1m[34mSELECT  "cards".* FROM "cards" ORDER BY "cards"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+Started GET "/cards" for 127.0.0.1 at 2017-10-02 00:42:32 +0300
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 18ms (Views: 15.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/cards" for 127.0.0.1 at 2017-10-02 00:42:35 +0300
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 17ms (Views: 15.6ms | ActiveRecord: 0.2ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-10-01 21:42:25.177071"], ["updated_at", "2017-10-01 21:42:40.329034"], ["id", 1]]
+  [1m[35m (3.2ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/cards" for 127.0.0.1 at 2017-10-02 00:42:42 +0300
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 17ms (Views: 14.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/cards" for 127.0.0.1 at 2017-10-02 00:49:22 +0300
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 20ms (Views: 17.2ms | ActiveRecord: 0.2ms)
+
+
+  [1m[36mCard Load (0.5ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  [1m[36mCard Load (0.5ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-09-28 21:53:31.630261"], ["updated_at", "2017-10-01 21:53:31.631482"], ["id", 2]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-09-29 21:53:31.634852"], ["updated_at", "2017-10-01 21:53:31.635880"], ["id", 3]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-09-30 21:53:31.638316"], ["updated_at", "2017-10-01 21:53:31.639115"], ["id", 4]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-09-30 21:53:31.641208"], ["updated_at", "2017-10-01 21:53:31.642109"], ["id", 5]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-10-01 21:53:31.644167"], ["updated_at", "2017-10-01 21:53:31.645081"], ["id", 6]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-10-01 21:53:31.648477"], ["updated_at", "2017-10-01 21:53:31.649290"], ["id", 7]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-09-28 21:53:31.651194"], ["updated_at", "2017-10-01 21:53:31.651864"], ["id", 8]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-10-01 21:53:31.653616"], ["updated_at", "2017-10-01 21:53:31.654372"], ["id", 9]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-09-29 21:53:31.657070"], ["updated_at", "2017-10-01 21:53:31.658227"], ["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/cards" for 127.0.0.1 at 2017-10-02 00:53:39 +0300
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 17ms (Views: 15.2ms | ActiveRecord: 0.2ms)
+
+
+  [1m[36mCard Load (0.5ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-09-30 21:54:15.340877"], ["updated_at", "2017-10-01 21:54:15.342624"], ["id", 2]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-09-29 21:54:15.346344"], ["updated_at", "2017-10-01 21:54:15.347442"], ["id", 3]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-09-28 21:54:15.349647"], ["updated_at", "2017-10-01 21:54:15.350523"], ["id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-09-28 21:54:15.352552"], ["updated_at", "2017-10-01 21:54:15.353437"], ["id", 5]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-09-30 21:54:15.355385"], ["updated_at", "2017-10-01 21:54:15.356260"], ["id", 6]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-09-30 21:54:15.358194"], ["updated_at", "2017-10-01 21:54:15.360433"], ["id", 7]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-09-30 21:54:15.362663"], ["updated_at", "2017-10-01 21:54:15.363737"], ["id", 8]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-09-28 21:54:15.365717"], ["updated_at", "2017-10-01 21:54:15.366691"], ["id", 9]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-10-01 21:54:15.368832"], ["updated_at", "2017-10-01 21:54:15.371187"], ["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/cards" for 127.0.0.1 at 2017-10-02 00:54:18 +0300
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.4ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 19ms (Views: 16.7ms | ActiveRecord: 0.4ms)
+
+
+  [1m[36mCard Load (0.5ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-09-28 21:56:13.873445"], ["updated_at", "2017-10-01 21:56:13.875359"], ["id", 2]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-09-30 21:56:13.879117"], ["updated_at", "2017-10-01 21:56:13.880227"], ["id", 3]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-09-29 21:56:13.882385"], ["updated_at", "2017-10-01 21:56:13.883262"], ["id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-09-30 21:56:13.885165"], ["updated_at", "2017-10-01 21:56:13.886069"], ["id", 5]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-09-30 21:56:13.888030"], ["updated_at", "2017-10-01 21:56:13.888964"], ["id", 6]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-10-01 21:56:13.892289"], ["updated_at", "2017-10-01 21:56:13.893353"], ["id", 7]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-09-29 21:56:13.895461"], ["updated_at", "2017-10-01 21:56:13.896416"], ["id", 8]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-09-28 21:56:13.898604"], ["updated_at", "2017-10-01 21:56:13.899472"], ["id", 9]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-09-30 21:56:13.902220"], ["updated_at", "2017-10-01 21:56:13.903155"], ["id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/cards" for 127.0.0.1 at 2017-10-02 00:56:26 +0300
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 17ms (Views: 15.1ms | ActiveRecord: 0.2ms)
+
+
+  [1m[36mCard Load (3.3ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-10-01 21:57:05.535802"], ["updated_at", "2017-10-01 21:57:05.537764"], ["id", 2]]
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-09-29 21:57:05.543958"], ["updated_at", "2017-10-01 21:57:05.545360"], ["id", 3]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-10-01 21:57:05.548482"], ["updated_at", "2017-10-01 21:57:05.549620"], ["id", 4]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-10-01 21:57:05.552701"], ["updated_at", "2017-10-01 21:57:05.553723"], ["id", 5]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-09-30 21:57:05.555940"], ["updated_at", "2017-10-01 21:57:05.556961"], ["id", 6]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-09-30 21:57:05.559804"], ["updated_at", "2017-10-01 21:57:05.560719"], ["id", 7]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-09-30 21:57:05.562796"], ["updated_at", "2017-10-01 21:57:05.563690"], ["id", 8]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-09-30 21:57:05.565999"], ["updated_at", "2017-10-01 21:57:05.567301"], ["id", 9]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "cards" SET "review_date" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["review_date", "2017-09-29 21:57:05.570396"], ["updated_at", "2017-10-01 21:57:05.571598"], ["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/cards" for 127.0.0.1 at 2017-10-02 00:57:13 +0300
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 19ms (Views: 16.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/cards" for 127.0.0.1 at 2017-10-02 00:57:38 +0300
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 19ms (Views: 16.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/cards" for 127.0.0.1 at 2017-10-02 00:58:38 +0300
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 20ms (Views: 16.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/cards" for 127.0.0.1 at 2017-10-02 00:58:51 +0300
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 27ms (Views: 23.4ms | ActiveRecord: 0.2ms)
+
+
