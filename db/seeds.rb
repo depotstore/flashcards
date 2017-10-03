@@ -1,7 +1,18 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+data =
+%w{ shape		        форма
+    quadrilateral	  четырёхугольник
+    square		      квадрат
+    rectangle	      прямоугольник
+    trapezoid	      трапеция
+    rhombus		      ромб
+    rhomboid	      ромбоид
+    parallelogram	  параллелограмм
+    trapezium	      трапеция}
+
+  data.each_with_index do |word, index|
+    if index % 2 == 1
+      Card.create!( original_text: data[index - 1],
+                    translated_text: data[index],
+                    review_date: Time.now + 3.days)
+    end
+  end

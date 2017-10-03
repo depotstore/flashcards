@@ -1,0 +1,29 @@
+<% if @card.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@card.errors.count, 'error')%>
+      prohibited this card from being saved:
+    </h2>
+    <ul>
+      <% @card.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: @card, local: true do |f| %>
+  <p class="form-group">
+    <%= f.label :original_text %>
+    <%= f.text_field :original_text, class: "form-control" %>
+  </p>
+  <p class="form-group">
+    <%= f.label :translated_text %>
+    <%= f.text_field :translated_text, class: "form-control" %><br>
+  </p>
+
+  <p class="form-group">
+    <% verb = controller.action_name == 'new' ? 'Create ' : 'Update ' %>
+    <%= f.submit verb + 'flashcard', class: 'bth btn-primary' %>
+  </p>
+<% end %>

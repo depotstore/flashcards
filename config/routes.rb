@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
-  resources :cards, only: [:index, :show]
+  resources :cards, except: [:show]
 end
