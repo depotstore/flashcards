@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  before_action :set_card, only: [:edit, :update, :destroy]
+  before_action :set_card, only: %i[edit update destroy]
 
   def index
     @cards = Card.all
@@ -40,16 +40,17 @@ class CardsController < ApplicationController
   end
 
   private
-    def card_params
-      params.require(:card).permit(:original_text, :translated_text)
-    end
 
-    def set_card
-      @card = Card.find(params[:id])
-    end
+  def card_params
+    params.require(:card).permit(:original_text, :translated_text)
+  end
 
-    def flash_danger
-      flash[:danger] = 'Something wrong.'
-    end
+  def set_card
+    @card = Card.find(params[:id])
+  end
+
+  def flash_danger
+    flash[:danger] = 'Something wrong.'
+  end
 
 end
