@@ -10,5 +10,5 @@ rows.each do |e|
   card = Card.create!(original_text: e.css('td')[2].content,
                       translated_text: e.css('td')[1].content,
                       review_date: Time.now + 3.days)
-  puts "#{card.inspect}"
+  puts card.inspect
 end
