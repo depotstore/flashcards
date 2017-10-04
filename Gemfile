@@ -37,8 +37,6 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
-  # Use sqlite3 as the database for Active Record
-  # gem 'sqlite3'
 end
 
 group :development do
@@ -54,3 +52,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'pg'
+
+gem 'nokogiri'

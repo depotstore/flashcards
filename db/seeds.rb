@@ -1,18 +1,14 @@
-data =
-    %w[shape		        форма
-       quadrilateral	  четырёхугольник
-       square		        квадрат
-       rectangle	      прямоугольник
-       trapezoid	      трапеция
-       rhombus		      ромб
-       rhomboid	        ромбоид
-       parallelogram	  параллелограмм
-       trapezium	      трапеция]
+require 'nokogiri'
+require 'open-uri'
 
-  data.each_index do |i|
-    if i.odd?
-      Card.create!(original_text: data[i - 1],
-                   translated_text: data[i],
-                   review_date: Time.now + 3.days)
-    end
-  end
+address = 'http://1000mostcommonwords.com/1000-most-common-russian-words/'
+page = Nokogiri::HTML(open(address))
+rows = page.css('#post-162 > div > table > tbody > tr')
+rows.shift
+
+rows.each do |e|
+  card = Card.create!(original_text: e.css('td')[2].content,
+                      translated_text: e.css('td')[1].content,
+                      review_date: Time.now + 3.days)
+  puts "#{card.inspect}"
+end
