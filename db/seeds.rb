@@ -9,8 +9,8 @@ rows.shift
 rows.each do |e|
   card = Card.create!(original_text: e.css('td')[2].content,
                       translated_text: e.css('td')[1].content,
-                      review_date: (Time.now + 3.days))
-  random_date = Time.now - rand(-3..2).days
+                      review_date: 3.days.from_now)
+  random_date = rand(-3..3).days.from_now
   card.update_attribute(:review_date, random_date)
   puts card.inspect
 end
