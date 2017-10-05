@@ -16,6 +16,9 @@
     </tbody>
   </table>
 <%= form_tag(controller: 'static_pages', action: 'check_answer') do |f| %>
+
+  <%= hidden_field_tag :checked_card_id, @card.id %>
+
   <p class="form-group">
     <%= label_tag :translation %>
     <%= text_field_tag :translation, nil, class: "form-control" %>
