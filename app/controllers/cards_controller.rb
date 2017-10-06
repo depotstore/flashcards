@@ -3,7 +3,7 @@ class CardsController < ApplicationController
 
   def index
     @cards = Card.latest_first
-    @number = Card.review_date_over(Time.now).count
+    @number = Card.review_date_over.count
   end
 
   def new

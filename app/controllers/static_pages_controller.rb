@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
-    @card = Card.review_date_over(Time.now).random_card
+    @card = Card.review_date_over.random_card
     # if there aren't any card with overdue date
     @card = Card.random_card unless @card.instance_of?(Card)
   end
@@ -10,10 +10,10 @@ class StaticPagesController < ApplicationController
     if @card.check_translation(params[:translation])
       flash[:success] = 'Правильно'
       @card.arrange_review_date(Time.now)
-      redirect_to root_path
+      redirect_to root_url
     else
       flash[:danger] = 'Не правильно'
-      render 'static_pages/home'
+      render action: :home
     end
   end
 end

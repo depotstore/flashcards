@@ -3,8 +3,7 @@ class Card < ApplicationRecord
   before_validation(on: :create) { self.review_date = Time.now + 3.days }
   validates :original_text, :translated_text, :review_date, presence: true
   validate :not_the_same
-  scope :review_date_over,
-          ->(current_date){ where("review_date < ?", current_date) }
+  scope :review_date_over, ->{ where("review_date < ?", Time.now) }
   scope :latest_first, ->{ order(review_date: :asc) }
   scope :random_card, ->{ where("RANDOM()<0.01").first }
 
