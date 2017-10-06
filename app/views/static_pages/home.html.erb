@@ -1,30 +1,8 @@
 <p style="font-size: 22px;">
   Первый в мире удобный менеджер флеш-карточек. Именно так.
 </p>
-  <table class="table table-striped">
-    <tbody>
-      <tr>
-        <td><%= @card.original_text %>&nbsp;
-          <span style="color:red;">(this field for test purpose only,
-                  because source translation is not correct for some words)
-          </span>
-        </td>
-      </tr>
-      <tr>
-        <td style="font-size: 30px;"><%= @card.translated_text %></td>
-      </tr>
-    </tbody>
-  </table>
-<%= form_tag(controller: 'static_pages', action: 'check_answer') do |f| %>
-
-  <%= hidden_field_tag :checked_card_id, @card.id %>
-
-  <p class="form-group">
-    <%= label_tag :translation %>
-    <%= text_field_tag :translation, nil, class: "form-control" %>
-  </p>
-
-  <p class="form-group">
-    <%= submit_tag 'Проверить', class: 'bth btn-primary' %>
-  </p>
+<% if any_card?(@card) %>
+  <%= render 'reviewed_card' %>
+<% else %>
+  <h2>No cards for reivew.</h2>
 <% end %>

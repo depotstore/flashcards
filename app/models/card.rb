@@ -4,7 +4,7 @@ class Card < ApplicationRecord
   validates :original_text, :translated_text, :review_date, presence: true
   validate :not_the_same
   scope :review_date_over, ->{ where("review_date < ?", Time.now) }
-  scope :latest_first, ->{ order(review_date: :asc) }
+  scope :latest, ->{ order(review_date: :asc) }
   scope :random_card, ->{ where("RANDOM()<0.01").first }
 
   # check that original and translated field aren't the same
@@ -13,9 +13,9 @@ class Card < ApplicationRecord
     errors.add(:original_text, " and translated text shouldn't be equal.")
   end
 
-  # set review date 3 days after selected date
-  def arrange_review_date(date)
-    update_attribute(:review_date, (date + 3.days))
+  # set review date 3 days after date when card was riviewed
+  def arrange_review_date
+    update_attribute(:review_date, 3.days.from_now)
   end
 
   # remove leading and trailing spaces, case insensitive,

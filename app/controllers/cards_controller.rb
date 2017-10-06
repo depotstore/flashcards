@@ -2,7 +2,7 @@ class CardsController < ApplicationController
   before_action :set_card, only: %i[edit update destroy]
 
   def index
-    @cards = Card.latest_first
+    @cards = Card.latest
     @number = Card.review_date_over.count
   end
 
