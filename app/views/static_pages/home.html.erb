@@ -1,7 +1,7 @@
 <p style="font-size: 22px;">
   Первый в мире удобный менеджер флеш-карточек. Именно так.
 </p>
-<% if any_card?(@card) %>
+<% if @card.present? %>
   <%= render 'reviewed_card' %>
 <% else %>
   <h2>No cards for reivew.</h2>
