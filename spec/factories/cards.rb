@@ -7,7 +7,7 @@ FactoryGirl.define do
 
   factory :wrong_card, class: Card do
     original_text 'test'
-    translated_text 'тест'
+    translated_text 'test'
     review_date 3.days.from_now
   end
 end
