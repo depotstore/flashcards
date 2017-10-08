@@ -10,3 +10,4 @@ script:
 before_script:
   - postgresql -e 'create database flashcards_testing'
 bundler_args: --binstubs=./bundler_stubs
+install: gem install rails
