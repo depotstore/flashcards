@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Card, type: :model do
 
-  subject(:card){ FactoryGirl.build(:card) }
+  subject(:card) { FactoryGirl.build(:card) }
 
   describe '#check_translation' do
     context 'when translation is correct' do
@@ -25,8 +25,8 @@ RSpec.describe Card, type: :model do
   end
 
   describe '#not_the_same' do
-    let(:wrong_card){ FactoryGirl.build(:wrong_card) }
-    context 'when original and translated text are the same'
+    let(:wrong_card) { FactoryGirl.build(:wrong_card) }
+    context 'when original and translated text are the same' do
       it 'returns error message' do
         expect(wrong_card.not_the_same[0]).to eql("and translated text shouldn't be equal.")
       end
@@ -36,4 +36,5 @@ RSpec.describe Card, type: :model do
         expect(card.not_the_same).to be nil
       end
     end
+  end
 end
