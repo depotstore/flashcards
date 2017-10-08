@@ -1,6 +1,3 @@
 language: ruby
 services:
   - postgresql
-before_script:
-  - cp config/database.yml.travis config/database.yml
-  - psql -c 'create database flashcards_testing;' -U postgres
