@@ -20,7 +20,7 @@ RSpec.describe Card, type: :model do
   describe '#arrange_review_date' do
     it 'arranges date 3 days from now' do
       card.arrange_review_date
-      expect(card.review_date.to_s).to eql(3.day.from_now.to_s)
+      expect(card.review_date).to eql(3.days.from_now.to_date)
     end
   end
 
