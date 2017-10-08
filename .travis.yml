@@ -1,5 +1,4 @@
 language: ruby
+dist: trusty
 rvm:
-    2.2
-    jruby
-    rbx-2
+  - rbx-3.69
