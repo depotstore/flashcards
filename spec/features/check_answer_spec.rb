@@ -20,12 +20,12 @@ describe 'checking answer' do
   end
 
   context 'entering translation and checking answer' do
-    it "enters right answer" do
+    it "returns 'Правильно' when user enters right answer" do
       fill_in(:translation, with: 'picture')
       click_button('Проверить')
       expect(page).to have_content 'Правильно'
     end
-    it "enters wrong answer" do
+    it "returns 'Не правильно' when user enters wrong answer" do
       fill_in(:translation, with: 'wrong')
       click_button('Проверить')
       expect(page).to have_content 'Не правильно'
