@@ -3,9 +3,9 @@ class Card < ApplicationRecord
   before_validation(on: :create) { self.review_date = 3.days.from_now }
   validates :original_text, :translated_text, :review_date, presence: true
   validate :not_the_same
-  scope :review_date_over, ->{ where("review_date < ?", Time.now) }
+  scope :review_date_over, ->{ where("review_date < ?", Date.today) }
   scope :latest, ->{ order(review_date: :asc) }
-  scope :random_card, ->{ where("RANDOM()<0.01").first }
+  scope :random_card, ->{ order("RANDOM()").first }
 
   # check that original and translated field aren't the same
   def not_the_same

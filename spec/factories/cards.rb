@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :card do
     original_text 'picture'
     translated_text 'картинка'
-    review_date Time.now
+    review_date Date.today
   end
 
   factory :wrong_card, class: Card do
