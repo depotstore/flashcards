@@ -15,7 +15,7 @@ describe 'checking answer' do
       expect(page).to have_button 'Проверить'
     end
     it "has word for translation"  do
-      expect(page).to have_content "#{card.translated_text}"
+      expect(page).to have_content card.translated_text
     end
   end
 
