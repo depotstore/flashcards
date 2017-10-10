@@ -3,6 +3,7 @@ FactoryGirl.define do
     original_text 'picture'
     translated_text 'картинка'
     review_date Date.today
+    user
   end
 
   factory :wrong_card, class: Card do
