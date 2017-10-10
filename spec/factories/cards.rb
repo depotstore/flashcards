@@ -3,7 +3,7 @@ FactoryGirl.define do
     original_text 'picture'
     translated_text 'картинка'
     review_date Date.today
-    user { User.where(email: "user@example.com").first_or_create }
+    user
   end
 
   factory :wrong_card, class: Card do
