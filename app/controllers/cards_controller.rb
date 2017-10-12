@@ -2,20 +2,20 @@ class CardsController < ApplicationController
   before_action :set_card, only: %i[edit update destroy]
 
   def index
-    @cards = Card.latest
-    @number = Card.review_date_over.count
+    @cards = user_cards.latest
+    @number = user_cards.review_date_over.count
   end
 
   def new
-    @card = Card.new
+    @card = user_cards.build
   end
 
   def create
-    @card = Card.new(card_params)
+    @card = user_cards.build(card_params)
 
     if @card.save
       flash[:success] = 'Card created.'
-      redirect_to cards_path
+      redirect_to cards_url
     else
       flash_danger
       render 'new'
@@ -27,7 +27,7 @@ class CardsController < ApplicationController
   def update
     if @card.update(card_params)
       flash[:success] = 'Card updated.'
-      redirect_to cards_path
+      redirect_to cards_url
     else
       flash_danger
       render 'edit'
@@ -37,7 +37,7 @@ class CardsController < ApplicationController
   def destroy
     @card.destroy
     flash[:success] = 'Card deleted.'
-    redirect_to cards_path
+    redirect_to cards_url
   end
 
   private
@@ -47,7 +47,7 @@ class CardsController < ApplicationController
   end
 
   def set_card
-    @card = Card.find(params[:id])
+    @card = user_cards.find(params[:id])
   end
 
   def flash_danger

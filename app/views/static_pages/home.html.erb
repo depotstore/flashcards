@@ -3,6 +3,8 @@
 </p>
 <% if @card.present? %>
   <%= render 'reviewed_card' %>
-<% else %>
+<% elsif current_user %>
   <h2>No cards for reivew.</h2>
+<% else %>
+  <%= render 'user_sessions/form' %>
 <% end %>
