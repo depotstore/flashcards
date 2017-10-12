@@ -2,16 +2,16 @@ class CardsController < ApplicationController
   before_action :set_card, only: %i[edit update destroy]
 
   def index
-    @cards = Card.latest
-    @number = Card.review_date_over.count
+    @cards = user_cards.latest
+    @number = user_cards.review_date_over.count
   end
 
   def new
-    @card = Card.new
+    @card = user_cards.build
   end
 
   def create
-    @card = Card.new(card_params)
+    @card = user_cards.build(card_params)
 
     if @card.save
       flash[:success] = 'Card created.'
@@ -47,7 +47,7 @@ class CardsController < ApplicationController
   end
 
   def set_card
-    @card = Card.find(params[:id])
+    @card = user_cards.find(params[:id])
   end
 
   def flash_danger

@@ -1,10 +1,12 @@
 require 'rails_helper'
 
 describe 'checking answer' do
-  let!(:card) { create(:card) }
+  let!(:user) { create(:user) }
+  let!(:card) { create(:card, user: user) }
+
   before(:each) do
     card.update_attribute(:review_date, -3.days.from_now)
-    visit root_path
+    login(user.email, '123')
   end
 
   context 'looking at the card for review' do

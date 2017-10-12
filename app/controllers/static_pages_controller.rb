@@ -1,10 +1,12 @@
 class StaticPagesController < ApplicationController
+  skip_before_action :require_login, only: :home
+
   def home
-    @card = Card.review_date_over.random_card
+    @card = user_cards.review_date_over.random_card if user_cards
   end
 
   def check_answer
-    @card = Card.find(params[:checked_card_id])
+    @card = user_cards.find(params[:checked_card_id])
     if @card.check_translation(params[:translation])
       flash[:success] = 'Правильно'
       @card.arrange_review_date
