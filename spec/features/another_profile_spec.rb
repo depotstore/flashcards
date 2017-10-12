@@ -1,14 +1,16 @@
 require 'rails_helper'
 
 describe 'profile of another user' do
-  let!(:user){ create(:user) }
-  let!(:another_user){ create(:user, email: 'user2@example.com') }
-  let(:card){ build(:card) }
-  let(:another_card){ build(:card, original_text: 'test', translated_text: 'тест')}
+  let!(:user) { create(:user) }
+  let!(:another_user) { create(:user, email: 'user2@example.com') }
+  let!(:card) { create(:card, user: user) }
+  let!(:another_card) do
+    create(:card, user: another_user,
+                  original_text: 'test',
+                  translated_text: 'тест')
+  end
 
   before(:each) do
-    user.cards << card
-    another_user.cards << another_card
     visit root_path
   end
   context 'access to cards (user)' do
@@ -36,5 +38,4 @@ describe 'profile of another user' do
       expect(page).not_to have_content 'картинка'
     end
   end
-
 end

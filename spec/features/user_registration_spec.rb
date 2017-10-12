@@ -31,6 +31,5 @@ describe 'user registration' do
       click_link 'Edit Profile'
       expect(page).to have_content('Edit Profile', count: 2)
     end
-
   end
 end

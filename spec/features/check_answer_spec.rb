@@ -2,10 +2,9 @@ require 'rails_helper'
 
 describe 'checking answer' do
   let!(:user) { create(:user) }
-  let(:card) { build(:card) }
+  let!(:card) { create(:card, user: user) }
 
   before(:each) do
-    user.cards << card
     card.update_attribute(:review_date, -3.days.from_now)
     login(user.email, '123')
   end

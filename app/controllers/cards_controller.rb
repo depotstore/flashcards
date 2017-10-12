@@ -15,7 +15,7 @@ class CardsController < ApplicationController
 
     if @card.save
       flash[:success] = 'Card created.'
-      redirect_to cards_url
+      redirect_to cards_path
     else
       flash_danger
       render 'new'
@@ -27,7 +27,7 @@ class CardsController < ApplicationController
   def update
     if @card.update(card_params)
       flash[:success] = 'Card updated.'
-      redirect_to cards_url
+      redirect_to cards_path
     else
       flash_danger
       render 'edit'
@@ -37,7 +37,7 @@ class CardsController < ApplicationController
   def destroy
     @card.destroy
     flash[:success] = 'Card deleted.'
-    redirect_to cards_url
+    redirect_to cards_path
   end
 
   private
