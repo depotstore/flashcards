@@ -15,7 +15,7 @@ Rails.application.config.sorcery.configure do |config|
   config.external_providers = [:github, :facebook]
   config.github.key = "c154bf5a5dafcbfb9265"
   config.github.secret = "b9363c70d42779a39b2d88d136fb28445e4f4ba4"
-  config.github.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=github"
+  config.github.callback_url = "https://flashcardreader.herokuapp.com/oauth/callback?provider=github"
   config.github.user_info_mapping = { email: "name" }
   config.github.scope = "user:email"
 
