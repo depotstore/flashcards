@@ -26,6 +26,9 @@
           <li class="<%= 'active' if controller.action_name == 'home' %>">
             <%= link_to 'Home', root_path %>
           </li>
+          <li>
+            <%= link_to 'Login with GitHub', auth_at_provider_path(provider: :github) %>
+          </li>
           <% if current_user %>
             <li><%= link_to "Edit Profile", edit_user_path(current_user.id) %></li>
             <li><%= link_to "Logout", :logout, method: :post %></li>
@@ -55,5 +58,6 @@
         <%= yield %>
       </section>
     </section>
+    <%= debug(params) if Rails.env.development? %>
   </body>
 </html>
