@@ -13,6 +13,6 @@ Rails.application.routes.draw do
   post 'static_pages/check_answer'
    # displays 'home' form when browser reloaded
   get 'static_pages/check_answer', to: 'static_pages#home' #code debt
-  get '/users', to: 'static_pages#home'
+  # get '/users', to: 'static_pages#home'
   resources :cards, except: %i[show]
 end
