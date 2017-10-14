@@ -12,21 +12,22 @@ class OauthsController < ApplicationController
       redirect_to root_path
     else
       begin
-        puts "creating user from #{params[:provider]}"
         @user = create_from(provider)
-        puts "oauth_user: #{@user.inspect}"
         reset_session # protect from session fixation attack
         auto_login(@user)
         flash[:success] = "Logged in from #{provider.titleize}!"
         redirect_to root_path
       rescue => e
-        flash[:danger] = "Failed to login from #{provider.titleize}\n#{e.message}!"
+        flash[:danger] = "Failed to login from #{provider.titleize}!"
+        Rails.logger.error e
+        Rails.logger.error e.message
         redirect_to root_path
       end
     end
   end
+
   private
   def auth_params
-    params.permit(:code, :provider)
+    params.permit(:code, :provider, :email)
   end
 end

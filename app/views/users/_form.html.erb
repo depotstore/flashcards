@@ -1,4 +1,4 @@
-<%= form_with(model: user, local: true) do |f| %>
+<%= form_with(model: @user, local: true) do |f| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(user.errors.count, "error") %>
@@ -23,7 +23,8 @@
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation, class: "form-control" %>
   </div>
+  <br>
   <div class="form-group">
-    <%= f.submit 'Submit', class: 'bth btn-primary'%>
+    <%= f.submit 'Submit', class: 'bth btn-primary form-control'%>
   </div>
 <% end %>
