@@ -28,7 +28,12 @@
   <% end %>
   <p class="form-group" >
     <%= f.file_field :picture, accept: "image/jpeg,image/gif,image/png",
-                               id: "card_picture" %><br>
+                               id: "card_picture" %>
+  </p>
+  <div>OR</div><br>
+  <p class="form-group" >
+    <%= f.label 'Enter url to an image' %>
+    <%= f.text_field :remote_picture_url, class: "form-control" %><br>
   </p>
 
   <p class="form-group">
