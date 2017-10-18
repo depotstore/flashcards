@@ -6,7 +6,7 @@ class SorceryCore < ActiveRecord::Migration[5.1]
       t.string :salt
       t.references
 
-      t.timestamps                :null => false
+      t.timestamps null: false
     end
 
     add_index :users, :email, unique: true
