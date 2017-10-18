@@ -34,7 +34,7 @@ describe 'creating card with picture' do
       click_link 'Добавить карточку'
       fill_in('card[original_text]', with: 'test')
       fill_in('card[translated_text]', with: 'тест')
-      attach_file 'card[picture]', '/Users/computer/Desktop/mkdev/square.png'
+      attach_file 'card[picture]', Rails.root + "app/assets/images/square.png"
     end
 
     it 'has notification' do
