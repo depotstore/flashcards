@@ -12,7 +12,7 @@ Rails.application.config.sorcery.configure do |config|
   # Default: `:not_authenticated`
   #
   # config.not_authenticated_action =
-  config.external_providers = [:github, :facebook]
+  config.external_providers = [:github]
   config.github.key = ENV["GH_KEY"]
   config.github.secret = ENV["GH_SECRET"]
   config.github.callback_url = "https://flashcardreader.herokuapp.com/oauth/callback?provider=github"

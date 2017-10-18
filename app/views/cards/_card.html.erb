@@ -18,7 +18,17 @@
   </p>
   <p class="form-group">
     <%= f.label :translated_text %>
-    <%= f.text_field :translated_text, class: "form-control" %><br>
+    <%= f.text_field :translated_text, class: "form-control" %>
+  </p>
+  <% if controller.action_name == "edit" %>
+  <p>current picture</p>
+  <p class="form-group">
+    <%= image_tag(@card.picture.url) if @card.picture %>
+  </p>
+  <% end %>
+  <p class="form-group" >
+    <%= f.file_field :picture, accept: "image/jpeg,image/gif,image/png",
+                               id: "card_picture" %><br>
   </p>
 
   <p class="form-group">
@@ -26,3 +36,14 @@
     <%= f.submit verb + 'flashcard', class: 'bth btn-primary form-control' %>
   </p>
 <% end %>
+
+<script>
+  $('#card_picture').bind('change', function() {
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 5) {
+      alert('Maximum file size is 5MB. Please choose a smaller file.');
+      $('#card_picture').val("");
+    }
+  });
+
+</script>

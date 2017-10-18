@@ -8,6 +8,9 @@
       </td>
     </tr>
     <tr>
+      <td><%= image_tag(@card.picture.url) if @card.picture %></td></td>
+    </tr>
+    <tr>
       <td style="font-size: 30px;"><%= @card.translated_text %></td>
     </tr>
   </tbody>
