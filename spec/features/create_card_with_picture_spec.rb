@@ -1,7 +1,7 @@
 require "rails_helper"
 
 describe 'creating card with picture' do
-  let!(:user){ create(:user) }
+  let!(:user) { create(:user) }
 
   context 'uploading picture by url' do
     before(:each) do
