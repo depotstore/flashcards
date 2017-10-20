@@ -2,6 +2,7 @@
 <h2>You have <%= pluralize(@number, 'overdue card')%></h2><br>
 <table class="table table-striped">
   <tr>
+    <th>Picture</th>
     <th>Original</th>
     <th>Translated</th>
     <th>Review</th>
@@ -9,6 +10,9 @@
   </tr>
   <% @cards.each do |card| %>
     <tr>
+      <td>
+        <%= card.picture.present? ? image_tag(card.picture.thumb.url) : 'no'  %>
+      </td>
       <td><%= card.original_text %></td>
       <td><%= card.translated_text %></td>
       <td><%= card.review_date.strftime("%d %m %Y")  if card.review_date %></td>

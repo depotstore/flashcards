@@ -18,11 +18,26 @@
   </p>
   <p class="form-group">
     <%= f.label :translated_text %>
-    <%= f.text_field :translated_text, class: "form-control" %><br>
+    <%= f.text_field :translated_text, class: "form-control" %>
+  </p>
+  <% if controller.action_name == "edit" %>
+  <p>current picture</p>
+  <p class="form-group">
+    <%= image_tag(@card.picture.url) if @card.picture %>
+  </p>
+  <% end %>
+  <p class="form-group" >
+    <%= f.file_field :picture, accept: "image/jpeg,image/gif,image/png",
+                               id: "card_picture", onchange: "checkSize()" %>
+  </p>
+  <div>OR</div><br>
+  <p class="form-group" >
+    <%= f.label 'Enter url to an image' %>
+    <%= f.text_field :remote_picture_url, class: "form-control" %><br>
   </p>
 
   <p class="form-group">
     <% verb = controller.action_name == 'new' ? 'Create ' : 'Update ' %>
-    <%= f.submit verb + 'flashcard', class: 'bth btn-primary' %>
+    <%= f.submit verb + 'flashcard', class: 'bth btn-primary form-control' %>
   </p>
 <% end %>

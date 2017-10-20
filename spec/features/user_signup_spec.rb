@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-describe 'user registration' do
+describe 'user signup' do
   let(:user) { build(:user) }
 
   before(:each) do
-    visit '/register'
+    visit '/signup'
     fill_in 'user[email]', with: user.email
     fill_in 'user[password]', with: '123'
     fill_in 'user[password_confirmation]', with: '123'
@@ -15,7 +15,7 @@ describe 'user registration' do
     expect(page).to have_content 'Account was successfully created.'
   end
 
-  context 'after registration user is logged in' do
+  context 'after signup user is logged in' do
     it 'has access to check translation' do
       visit root_path
       expect(page).to have_content 'No cards for reivew.'

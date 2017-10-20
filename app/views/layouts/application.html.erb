@@ -30,8 +30,12 @@
             <li><%= link_to "Edit Profile", edit_user_path(current_user.id) %></li>
             <li><%= link_to "Logout", :logout, method: :post %></li>
           <% else %>
-            <li><%= link_to "Register", :register%></li>
+            <li><%= link_to "Sign Up", :signup %></li>
             <li><%= link_to "Login", :login %></li>
+            <li>
+              <%= link_to 'Login with GitHub',
+                  auth_at_provider_path(provider: :github) %>
+            </li>
           <% end %>
         </ul>
       </div>
@@ -43,17 +47,20 @@
       <% end %>
       <header class="clearfix" >
         <h1>Флэшкарточкер</h1>
+        <% if current_user %>
         <ul class="navigation-links">
           <li><%= link_to 'Все карточки', cards_path %></li>
           <li>
             <%= link_to 'Добавить карточку', new_card_path %>
           </li>
         </ul>
+        <% end %>
       </header>
 
       <section>
         <%= yield %>
       </section>
     </section>
+    <%= debug(params) if Rails.env.development? %>
   </body>
 </html>

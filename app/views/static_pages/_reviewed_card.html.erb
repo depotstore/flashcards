@@ -8,6 +8,11 @@
       </td>
     </tr>
     <tr>
+      <td>
+        <%= @card.picture.present? ? image_tag(@card.picture.url) : 'no picture' %>
+      </td>
+    </tr>
+    <tr>
       <td style="font-size: 30px;"><%= @card.translated_text %></td>
     </tr>
   </tbody>

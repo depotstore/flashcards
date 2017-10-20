@@ -2,7 +2,7 @@
 # The default is nothing which will include only core features (password encryption, login/logout).
 # Available submodules are: :user_activation, :http_basic_auth, :remember_me,
 # :reset_password, :session_timeout, :brute_force_protection, :activity_logging, :external
-Rails.application.config.sorcery.submodules = []
+Rails.application.config.sorcery.submodules = [:external]
 
 # Here you can configure each submodule's features.
 Rails.application.config.sorcery.configure do |config|
@@ -12,6 +12,12 @@ Rails.application.config.sorcery.configure do |config|
   # Default: `:not_authenticated`
   #
   # config.not_authenticated_action =
+  config.external_providers = [:github]
+  config.github.key = ENV["GH_KEY"]
+  config.github.secret = ENV["GH_SECRET"]
+  config.github.callback_url = ENV["CALLBACK"]
+  config.github.user_info_mapping = { email: "email" }
+  config.github.scope = "user:email"
 
   # When a non logged in user tries to enter a page that requires login, save
   # the URL he wanted to reach, and send him there after login, using 'redirect_back_or_to'.
@@ -426,7 +432,7 @@ Rails.application.config.sorcery.configure do |config|
     # Class which holds the various external provider data for this user.
     # Default: `nil`
     #
-    # user.authentications_class =
+    user.authentications_class = Authentication
 
     # User's identifier in authentications class.
     # Default: `:user_id`

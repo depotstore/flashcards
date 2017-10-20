@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
-  skip_before_action :require_login, only: %i[index new create]
-
-  def index
-    @users = User.all
-  end
+  skip_before_action :require_login, only: %i[new create]
 
   def show; end
 
@@ -46,6 +42,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation)
+      params.require(:user).permit(:email, :password, :password_confirmation, :authentications_attribute)
     end
 end
