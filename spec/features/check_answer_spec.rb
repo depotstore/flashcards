@@ -2,7 +2,8 @@ require 'rails_helper'
 
 describe 'checking answer' do
   let!(:user) { create(:user) }
-  let!(:card) { create(:card, user: user) }
+  let!(:deck) { create(:deck, user: user, current: true) }
+  let!(:card) { create(:card, deck: deck) }
 
   before(:each) do
     card.update_attribute(:review_date, -3.days.from_now)

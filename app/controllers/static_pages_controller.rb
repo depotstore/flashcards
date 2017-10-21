@@ -2,7 +2,7 @@ class StaticPagesController < ApplicationController
   skip_before_action :require_login, only: :home
 
   def home
-    @card = user_cards.review_date_over.random_card if user_cards
+    @card = current_cards.review_date_over.random_card if current_user
   end
 
   def check_answer

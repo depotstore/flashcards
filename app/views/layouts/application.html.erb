@@ -29,6 +29,10 @@
           <% if current_user %>
             <li><%= link_to "Edit Profile", edit_user_path(current_user.id) %></li>
             <li><%= link_to "Logout", :logout, method: :post %></li>
+            <li><%= link_to "Decks", decks_path %></li>
+            <% if current_deck %>
+              <li><%= link_to(current_deck_name, deck_path(current_deck))%></li>
+            <% end %>
           <% else %>
             <li><%= link_to "Sign Up", :signup %></li>
             <li><%= link_to "Login", :login %></li>

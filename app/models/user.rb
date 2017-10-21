@@ -2,8 +2,8 @@ class User < ApplicationRecord
   authenticates_with_sorcery! do |config|
     config.authentications_class = Authentication
   end
-
-  has_many :cards, dependent: :destroy
+  has_many :decks, dependent: :destroy
+  has_many :cards, through: :decks
   validates :email, presence: true
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }

@@ -10,4 +10,12 @@ class ApplicationController < ActionController::Base
   def user_cards
     current_user.cards if current_user
   end
+
+  def current_deck
+    current_user.decks.find_by(current: true) if current_user
+  end
+
+  def current_cards
+    current_deck ? current_deck.cards : user_cards
+  end
 end

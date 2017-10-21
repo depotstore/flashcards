@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<table class="table table-striped">
+  <tbody>
+    <tr>
+      <th>Name</th>
+      <th>Current?</th>
+    </tr>
+    <tr>
+      <td><%= @deck.name %></td>
+      <td><%= @deck.current %></td>
+    </tr>
+  </tbody>
+</table>
+<%= render template: 'cards/index' %><br>
+
+<%= link_to 'Edit', edit_deck_path(@deck) %> |
+<%= link_to 'Back', decks_path %>
