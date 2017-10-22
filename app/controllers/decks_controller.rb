@@ -46,15 +46,15 @@ class DecksController < ApplicationController
   end
 
   private
-    def set_deck
-      @deck = current_user.decks.find(params[:id])
-    end
+  def set_deck
+    @deck = current_user.decks.find(params[:id])
+  end
 
-    def deck_params
-      params.require(:deck).permit(:name, :current)
-    end
+  def deck_params
+    params.require(:deck).permit(:name, :current)
+  end
 
-    def check_and_falsify
-      @deck.check_and_falsify(params[:deck][:current])
-    end
+  def check_and_falsify
+    @deck.check_and_falsify(params[:deck][:current])
+  end
 end
