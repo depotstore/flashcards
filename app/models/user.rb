@@ -13,10 +13,9 @@ class User < ApplicationRecord
   has_many :authentications, dependent: :destroy
   accepts_nested_attributes_for :authentications
 
-  # def assign_current_deck(checked, deck)
-  #   return if current_deck_id && current_deck_id != deck.id && checked != 'on' && checked.to_i != 1
-  #   puts "assign_current_deck #{deck.id}"
-  #   deck_id = checked == 'on' || checked.to_i == 1 ? deck.id : nil
-  #   update_attribute(:current_deck_id, deck_id)
-  # end
+  def assign_current_deck(deck_id)
+    # return if current_deck_id && current_deck_id != deck.id && checked != 'on' && checked.to_i != 1
+    # deck_id = checked == 'on' || checked.to_i == 1 ? deck.id : nil
+    update_attribute(:current_deck_id, deck_id)
+  end
 end

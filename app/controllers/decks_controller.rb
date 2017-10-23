@@ -28,10 +28,7 @@ class DecksController < ApplicationController
   end
 
   def update
-    # old_current_deck_id = current_user.current_deck_id
     if @deck.update(deck_params)
-      # puts "update old_current_deck_id #{old_current_deck_id}"
-      # puts "update current_deck_id #{current_user.current_deck_id}"
       make_deck_current_if_checked
       flash[:success] = 'Deck was successfully updated.'
       redirect_to @deck
@@ -57,7 +54,10 @@ class DecksController < ApplicationController
   end
 
   def make_deck_current_if_checked
-    # current_user.assign_current_deck(params[:current], @deck)
-    @deck.assign_current_deck(params[:current])
+    checked = params[:current]
+    current_deck_id = current_user.current_deck_id
+    return if current_deck_id && current_deck_id != @deck.id && checked != 'on' && checked.to_i != 1
+    deck_id = checked == 'on' || checked.to_i == 1 ? @deck.id : nil
+    current_user.assign_current_deck(deck_id)
   end
 end
