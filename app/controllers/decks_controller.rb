@@ -12,7 +12,6 @@ class DecksController < ApplicationController
 
   def new
     @deck = current_user.decks.build
-    "params current #{params[:current]}"
   end
 
   def edit; end
