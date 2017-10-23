@@ -54,6 +54,7 @@ class DecksController < ApplicationController
   end
 
   def make_deck_current_if_checked
-    current_user.assign_current_deck(params[:current], @deck)
+    # current_user.assign_current_deck(params[:current], @deck)
+    @deck.assign_current_deck(params[:current])
   end
 end
