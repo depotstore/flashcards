@@ -28,7 +28,10 @@ class DecksController < ApplicationController
   end
 
   def update
+    # old_current_deck_id = current_user.current_deck_id
     if @deck.update(deck_params)
+      # puts "update old_current_deck_id #{old_current_deck_id}"
+      # puts "update current_deck_id #{current_user.current_deck_id}"
       make_deck_current_if_checked
       flash[:success] = 'Deck was successfully updated.'
       redirect_to @deck
