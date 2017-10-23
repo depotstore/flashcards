@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_deck
-    current_user&.decks.find_by(id: current_user.current_deck_id)
+    current_user.decks.find_by(id: current_user.current_deck_id) if current_user
   end
 
   def current_cards

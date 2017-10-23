@@ -15,7 +15,7 @@ class User < ApplicationRecord
 
   def assign_current_deck(checked, deck)
     return if current_deck_id && current_deck_id != deck.id
-    deck_id = (checked == 'on' || checked.to_i == 1) ? deck.id : nil
+    deck_id = checked == 'on' || checked.to_i == 1 ? deck.id : nil
     update_attribute(:current_deck_id, deck_id)
   end
 end

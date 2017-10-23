@@ -1,7 +1,7 @@
 # Model for keeping card data.
 class Card < ApplicationRecord
   belongs_to :deck
-  before_validation(on: :create) { self.review_date = 3.days.from_now}
+  before_validation(on: :create) { self.review_date = 3.days.from_now }
   validates :original_text, :translated_text, :review_date, presence: true
   validate :not_the_same
   validate :picture_size
