@@ -1,4 +1,3 @@
-# no comments
 class DecksController < ApplicationController
   before_action :set_deck, only: %i[show edit update destroy]
 
