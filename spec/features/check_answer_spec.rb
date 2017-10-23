@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'checking answer' do
   let!(:user) { create(:user) }
-  let!(:deck) { create(:deck, user: user, current: true) }
+  let!(:deck) { create(:deck, user: user) }
   let!(:card) { create(:card, deck: deck) }
 
   before(:each) do

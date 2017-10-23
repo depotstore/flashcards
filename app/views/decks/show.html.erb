@@ -8,11 +8,10 @@
     </tr>
     <tr>
       <td><%= @deck.name %></td>
-      <td><%= @deck.current %></td>
+      <td><%= current_deck?(@deck) %></td>
     </tr>
   </tbody>
 </table>
-<%= render template: 'cards/index' %><br>
-
 <%= link_to 'Edit', edit_deck_path(@deck) %> |
 <%= link_to 'Back', decks_path %>
+<%= render template: 'cards/index' %>

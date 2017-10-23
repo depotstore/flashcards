@@ -3,8 +3,8 @@ require 'rails_helper'
 describe 'profile of another user' do
   let!(:user) { create(:user) }
   let!(:another_user) { create(:user, email: 'user2@example.com') }
-  let!(:deck) { create(:deck, user: user, current: true) }
-  let!(:another_deck) { create(:deck, user: another_user, current: true) }
+  let!(:deck) { create(:deck, user: user) }
+  let!(:another_deck) { create(:deck, user: another_user) }
   let!(:card) { create(:card, deck: deck) }
   let!(:another_card) do
     create(:card, deck: another_deck,

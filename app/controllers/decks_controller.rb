@@ -1,9 +1,8 @@
 class DecksController < ApplicationController
   before_action :set_deck, only: %i[show edit update destroy]
-  # after_action :check_and_falsify, only: %i[create update]
 
   def index
-    @decks = current_user.decks
+    @decks = current_user.decks.order(name: :asc)
   end
 
   def show
@@ -13,6 +12,7 @@ class DecksController < ApplicationController
 
   def new
     @deck = current_user.decks.build
+    "params current #{params[:current]}"
   end
 
   def edit; end
@@ -20,8 +20,8 @@ class DecksController < ApplicationController
   def create
     @deck = current_user.decks.build(deck_params)
     if @deck.save
+      make_deck_current_if_checked
       flash[:success] = 'Deck was successfully created.'
-      check_and_falsify
       redirect_to @deck
     else
       render :new
@@ -29,10 +29,9 @@ class DecksController < ApplicationController
   end
 
   def update
-    current_old = @deck.current
     if @deck.update(deck_params)
+      make_deck_current_if_checked
       flash[:success] = 'Deck was successfully updated.'
-      check_and_falsify unless @deck.current == current_old
       redirect_to @deck
     else
       render :edit
@@ -42,19 +41,20 @@ class DecksController < ApplicationController
   def destroy
     @deck.destroy
     flash[:success] = 'Deck was successfully destroyed.'
-    redirect_to decks_url
+    redirect_to decks_path
   end
 
   private
+
   def set_deck
     @deck = current_user.decks.find(params[:id])
   end
 
   def deck_params
-    params.require(:deck).permit(:name, :current)
+    params.require(:deck).permit(:name)
   end
 
-  def check_and_falsify
-    @deck.check_and_falsify(params[:deck][:current])
+  def make_deck_current_if_checked
+    current_user.assign_current_deck(params[:current], @deck)
   end
 end

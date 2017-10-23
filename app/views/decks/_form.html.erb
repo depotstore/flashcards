@@ -19,8 +19,8 @@
   <br>
 
   <div class="field">
-    <%= f.label :current %>
-    <%= f.check_box :current, checked: deck.current? %>
+    <%= label_tag :current %>
+    <%= check_box_tag :current, nil, current_deck?(deck) %>
   </div>
   <br>
 

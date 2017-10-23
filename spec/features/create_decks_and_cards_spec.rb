@@ -40,15 +40,8 @@ describe 'creating decks and cards' do
       click_link 'Добавить карточку'
       expect(page).not_to have_button('Create flashcard')
     end
-  end
-
-  context 'creating card (current deck)' do
-    before(:each) do
-      visit new_deck_path
-      fill_in('deck[name]', with: 'deck_1')
-      page.check('deck[current]')
-    end
-    it 'can create card deck is current' do
+    it 'can create card if deck is current' do
+      page.check('current')
       click_button 'Create Deck'
       click_link 'Добавить карточку'
       expect(page).to have_button('Create flashcard')

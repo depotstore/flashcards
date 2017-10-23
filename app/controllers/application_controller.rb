@@ -4,15 +4,15 @@ class ApplicationController < ActionController::Base
 
   def not_authenticated
     flash[:danger] = 'Please login first'
-    redirect_to login_url
+    redirect_to login_path
   end
 
   def user_cards
-    current_user.cards if current_user
+    current_user&.cards
   end
 
   def current_deck
-    current_user.decks.find_by(current: true) if current_user
+    current_user&.decks.find_by(id: current_user.current_deck_id)
   end
 
   def current_cards

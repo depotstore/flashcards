@@ -14,7 +14,7 @@
     <% @decks.each do |deck| %>
       <tr>
         <td><%= deck.name %></td>
-        <td><%= deck.current? %></td>
+        <td><%= current_deck?(deck) %></td>
         <td><%= deck.cards.count %></td>
         <td><%= link_to 'Show', deck %></td>
         <td><%= link_to 'Edit', edit_deck_path(deck) %></td>
