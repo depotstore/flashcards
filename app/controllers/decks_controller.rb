@@ -31,7 +31,7 @@ class DecksController < ApplicationController
     if @deck.update(deck_params)
       make_deck_current_if_checked
       flash[:success] = 'Deck was successfully updated.'
-      redirect_to @deck
+      redirect_to decks_path
     else
       render :edit
     end
@@ -54,10 +54,11 @@ class DecksController < ApplicationController
   end
 
   def make_deck_current_if_checked
-    checked = params[:current]
+    checkbox = params[:current]
     current_deck_id = current_user.current_deck_id
-    return if current_deck_id && current_deck_id != @deck.id && checked != 'on' && checked.to_i != 1
-    deck_id = checked == 'on' || checked.to_i == 1 ? @deck.id : nil
+    return if current_deck_id && current_deck_id != @deck.id &&
+            (checkbox.nil? || checkbox.eql?('0'))
+    deck_id = checkbox.eql?('on') || checkbox.eql?('1') ? @deck.id : nil
     current_user.assign_current_deck(deck_id)
   end
 end
