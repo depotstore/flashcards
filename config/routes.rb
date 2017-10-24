@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post 'logout', to: 'user_sessions#destroy'
   root 'static_pages#home'
   post 'static_pages/check_answer'
+  post 'decks/select_current_deck'
    # displays 'home' form when browser reloaded
   get 'static_pages/check_answer', to: 'static_pages#home' #code debt
   resources :cards, except: %i[show]

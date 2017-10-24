@@ -1,5 +1,4 @@
 <h1>Decks</h1>
-
 <table class="table table-striped">
   <thead>
     <tr>
@@ -23,7 +22,7 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
 <%= link_to 'New Deck', new_deck_path %>
+<br>
+<br>
+<%= render 'select_current_deck' %>

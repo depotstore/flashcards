@@ -11,8 +11,8 @@ class CardsController < ApplicationController
   end
 
   def create
-    @card = current_cards.build(card_params)
-
+    selected_deck = current_user.decks.find_by(id: params[:card][:deck_id])
+    @card = selected_deck.cards.build(card_params)
     if @card.save
       flash[:success] = 'Card created.'
       redirect_to cards_path
@@ -49,11 +49,10 @@ class CardsController < ApplicationController
   end
 
   def set_card
-    @card = current_cards.find(params[:id])
+    @card = Card.find(params[:id])
   end
 
   def flash_danger
     flash[:danger] = 'Something wrong.'
   end
-
 end

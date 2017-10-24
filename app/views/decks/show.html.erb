@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <table class="table table-striped">
   <tbody>
     <tr>
@@ -14,4 +12,6 @@
 </table>
 <%= link_to 'Edit', edit_deck_path(@deck) %> |
 <%= link_to 'Back', decks_path %>
-<%= render template: 'cards/index' %>
+<h3>This deck has <%= pluralize(@number, 'card')%></h3>
+<br>
+<%= render 'cards/card_table' %>

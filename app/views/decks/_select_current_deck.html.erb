@@ -1,0 +1,10 @@
+<%= form_tag(controller: :decks, action: :select_current_deck ) do %>
+  <p class="form-group">
+    <%= label_tag :deck_name %>
+    <%= select_tag :current_deck_id,
+        options_from_collection_for_select(current_user.decks, :id, :name, current_deck&.id),
+        include_blank: 'all decks',
+        class: 'form-control'  %>
+  </p>
+  <%= submit_tag 'select deck', class: 'bth btn-primary form-control' %>
+<% end %>

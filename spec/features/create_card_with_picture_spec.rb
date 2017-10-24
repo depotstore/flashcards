@@ -6,9 +6,7 @@ describe 'creating card with picture' do
 
   before(:each) do
     login(user.email, '123')
-    visit edit_deck_path(deck)
-    page.check('current')
-    click_button 'Update Deck'
+    user.assign_current_deck(deck.id)
     click_link 'Добавить карточку'
     fill_in('card[original_text]', with: 'test')
     fill_in('card[translated_text]', with: 'тест')

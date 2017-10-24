@@ -19,7 +19,6 @@ class DecksController < ApplicationController
   def create
     @deck = current_user.decks.build(deck_params)
     if @deck.save
-      make_deck_current_if_checked
       flash[:success] = 'Deck was successfully created.'
       redirect_to @deck
     else
@@ -29,7 +28,6 @@ class DecksController < ApplicationController
 
   def update
     if @deck.update(deck_params)
-      make_deck_current_if_checked
       flash[:success] = 'Deck was successfully updated.'
       redirect_to decks_path
     else
@@ -43,6 +41,12 @@ class DecksController < ApplicationController
     redirect_to decks_path
   end
 
+  def select_current_deck
+    current_user.assign_current_deck(params[:current_deck_id])
+    flash[:success] = 'Deck was successfully changed.'
+    redirect_to decks_path
+  end
+
   private
 
   def set_deck
@@ -50,15 +54,6 @@ class DecksController < ApplicationController
   end
 
   def deck_params
-    params.require(:deck).permit(:name)
-  end
-
-  def make_deck_current_if_checked
-    checkbox = params[:current]
-    current_deck_id = current_user.current_deck_id
-    return if current_deck_id && current_deck_id != @deck.id &&
-            (checkbox.nil? || checkbox.eql?('0'))
-    deck_id = checkbox.eql?('on') || checkbox.eql?('1') ? @deck.id : nil
-    current_user.assign_current_deck(deck_id)
+    params.require(:deck).permit(:name, :id)
   end
 end
