@@ -11,7 +11,7 @@ class CardsController < ApplicationController
   end
 
   def create
-    selected_deck = current_user.decks.find_by(id: params[:card][:deck_id])
+    selected_deck = current_user.decks.find(params[:card][:deck_id])
     @card = selected_deck.cards.build(card_params)
     if @card.save
       flash[:success] = 'Card created.'
