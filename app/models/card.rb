@@ -1,6 +1,6 @@
 # Model for keeping card data.
 class Card < ApplicationRecord
-  belongs_to :user
+  belongs_to :deck
   before_validation(on: :create) { self.review_date = 3.days.from_now }
   validates :original_text, :translated_text, :review_date, presence: true
   validate :not_the_same
@@ -9,7 +9,6 @@ class Card < ApplicationRecord
   scope :latest, ->{ order(review_date: :asc) }
   scope :random_card, ->{ order("RANDOM()").first }
   mount_uploader :picture, PictureUploader
-
 
   # check that original and translated field aren't the same
   def not_the_same

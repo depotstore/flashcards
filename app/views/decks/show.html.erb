@@ -1,0 +1,17 @@
+<table class="table table-striped">
+  <tbody>
+    <tr>
+      <th>Name</th>
+      <th>Current?</th>
+    </tr>
+    <tr>
+      <td><%= @deck.name %></td>
+      <td><%= current_deck?(@deck) %></td>
+    </tr>
+  </tbody>
+</table>
+<%= link_to 'Edit', edit_deck_path(@deck) %> |
+<%= link_to 'Back', decks_path %>
+<h3>This deck has <%= pluralize(@number, 'card')%></h3>
+<br>
+<%= render 'cards/card_table' %>

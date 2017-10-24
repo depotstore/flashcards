@@ -13,6 +13,11 @@
     </div>
   <% end %>
   <p class="form-group">
+    <%= f.label :deck_name %>
+    <%= f.select :deck_id, deck_names, {}, class: "form-control" %>
+    <p>Create <%= link_to 'another deck', new_deck_path %></p>
+  </p>
+  <p class="form-group">
     <%= f.label :original_text %>
     <%= f.text_field :original_text, class: "form-control" %>
   </p>
@@ -23,7 +28,7 @@
   <% if controller.action_name == "edit" %>
   <p>current picture</p>
   <p class="form-group">
-    <%= image_tag(@card.picture.url) if @card.picture %>
+    <%= image_tag(@card.picture.url) if @card.picture.present? %>
   </p>
   <% end %>
   <p class="form-group" >

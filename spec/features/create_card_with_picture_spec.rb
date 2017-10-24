@@ -2,13 +2,18 @@ require "rails_helper"
 
 describe 'creating card with picture' do
   let!(:user) { create(:user) }
+  let!(:deck) { create(:deck, user: user) }
+
+  before(:each) do
+    login(user.email, '123')
+    user.assign_current_deck(deck.id)
+    click_link 'Добавить карточку'
+    fill_in('card[original_text]', with: 'test')
+    fill_in('card[translated_text]', with: 'тест')
+  end
 
   context 'uploading picture by url' do
     before(:each) do
-      login(user.email, '123')
-      click_link 'Добавить карточку'
-      fill_in('card[original_text]', with: 'test')
-      fill_in('card[translated_text]', with: 'тест')
       picture_url = 'https://amazonbucketcde.s3.amazonaws.com/uploads/card/picture/1002/rectangle.png'
       fill_in('card[remote_picture_url]', with: picture_url)
     end
@@ -30,10 +35,6 @@ describe 'creating card with picture' do
 
   context 'uploading picture by attaching file' do
     before(:each) do
-      login(user.email, '123')
-      click_link 'Добавить карточку'
-      fill_in('card[original_text]', with: 'test')
-      fill_in('card[translated_text]', with: 'тест')
       attach_file 'card[picture]', Rails.root + "app/assets/images/square.png"
     end
 
