@@ -12,7 +12,7 @@ describe 'interval repetition' do
       fill_in(:translation, with: 'picture')
       click_button('Проверить')
       card.reload
-      expect(card.review_date.beginning_of_hour.utc.to_s).to eql 12.hours.from_now.beginning_of_hour.utc.to_s
+      expect(card.review_date.to_formatted_s(:long)).to eql 12.hours.from_now.to_formatted_s(:long)
     end
   end
   context 'checking translation of card that previously reviewed - right answer' do

@@ -95,7 +95,7 @@ RSpec.describe Card, type: :model do
     it 'assigns review date not less than 12.hours.from_now' do
       card.update_attribute(:box, 1)
       card.backward_review_date
-      expect(card.review_date.beginning_of_hour.utc.to_s).to eql(12.hours.from_now.beginning_of_hour.utc.to_s)
+      expect(card.review_date.to_formatted_s(:long)).to eql(12.hours.from_now.to_formatted_s(:long))
     end
   end
 end
