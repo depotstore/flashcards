@@ -30,9 +30,10 @@ describe 'interval repetition' do
       4.times do
         fill_in(:translation, with: 'wrong')
         click_button('Проверить')
+        card.reload
       end
-      card.reload
-      expect(card.review_date.to_date).to eql 3.days.from_now.to_date
+      # expect(card.review_date.to_date).to eql 3.days.from_now.to_date
+      expect(card.box).to eql 2
     end
   end
   context 'checking translation of card that previously reviewed - wrong answer' do

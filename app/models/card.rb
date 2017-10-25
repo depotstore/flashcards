@@ -1,17 +1,8 @@
 # Model for keeping card data.
 class Card < ApplicationRecord
   belongs_to :deck
-  before_validation(on: :create) do
-    self.review_date = Date.today
-    self.box = self.wrong_guess = 0
-  end
-  BOXES = [
-    BOX_1 = { box: 1, review_date: 12.hours.from_now },
-    BOX_2 = { box: 2, review_date: 3.days.from_now },
-    BOX_3 = { box: 3, review_date: 1.week.from_now },
-    BOX_4 = { box: 4, review_date: 2.weeks.from_now },
-    BOX_5 = { box: 5, review_date: 1.month.from_now }
-  ]
+  before_validation(on: :create) { self.review_date = Date.today }
+
   validates :original_text, :translated_text, :review_date, presence: true
   validates :box, numericality: { greater_than_or_equal_to: 0,
                                   less_than_or_equal_to: 5 }
@@ -24,24 +15,18 @@ class Card < ApplicationRecord
   scope :random_card, ->{ order("RANDOM()").first }
   mount_uploader :picture, PictureUploader
 
-  def forward_review_date
-    case box
-    when 0 then update(BOX_1)
-    when 1 then update(BOX_2)
-    when 2 then update(BOX_3)
-    when 3 then update(BOX_4)
-    when 4, 5 then update(BOX_5)
-    end
+  def review_dates
+  [Date.today, 12.hours.from_now, 3.days.from_now,
+  1.week.from_now, 2.weeks.from_now, 1.month.from_now]
   end
 
-  def backward_review_date
-    case box
-    when 0..2 then update(BOX_1)
-    when 3 then update(BOX_2)
-    when 4 then update(BOX_3)
-    when 5 then update(BOX_4)
-    end
-    update_attribute(:wrong_guess, 0)
+# forward review date if change = 1, backward review date if change = -1
+  def arrange_review_date(change)
+    self.box += change
+    self.box = 5 if box > 5
+    self.box = 1 if box < 1
+    self.wrong_guess = 0 if change.negative?
+    update(box: box, review_date: review_dates[box])
   end
 
   def wrong_guess_counter

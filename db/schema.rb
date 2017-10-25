@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(version: 20171024214050) do
     t.bigint "user_id"
     t.string "picture"
     t.bigint "deck_id"
-    t.integer "box"
-    t.integer "wrong_guess"
+    t.integer "box", default: 0
+    t.integer "wrong_guess", default: 0
     t.index ["deck_id"], name: "index_cards_on_deck_id"
     t.index ["user_id"], name: "index_cards_on_user_id"
   end
