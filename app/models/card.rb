@@ -15,9 +15,10 @@ class Card < ApplicationRecord
   scope :random_card, ->{ order("RANDOM()").first }
   mount_uploader :picture, PictureUploader
 
+# collection of review dates for each box, index of array equals to box number
   def review_dates
-  [Date.today, 12.hours.from_now, 3.days.from_now,
-  1.week.from_now, 2.weeks.from_now, 1.month.from_now]
+    [Date.today, 12.hours.from_now, 3.days.from_now,
+    1.week.from_now, 2.weeks.from_now, 1.month.from_now]
   end
 
 # forward review date if change = 1, backward review date if change = -1
@@ -29,6 +30,7 @@ class Card < ApplicationRecord
     update(box: box, review_date: review_dates[box])
   end
 
+# update wrong_guess value by one
   def wrong_guess_counter
     update_attribute(:wrong_guess, wrong_guess + 1)
   end
