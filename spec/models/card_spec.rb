@@ -17,13 +17,6 @@ RSpec.describe Card, type: :model do
     end
   end
 
-  # describe '#arrange_review_date' do
-  #   it 'arranges date 3 days from now' do
-  #     card.arrange_review_date
-  #     expect(card.review_date.to_date).to eql(3.days.from_now.to_date)
-  #   end
-  # end
-
   describe '#not_the_same' do
     let(:wrong_card) { build(:wrong_card) }
     context 'when original and translated text are the same' do

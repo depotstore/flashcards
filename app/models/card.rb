@@ -54,13 +54,8 @@ class Card < ApplicationRecord
     errors.add(:original_text, "and translated text shouldn't be equal.")
   end
 
-  # set review date 3 days after date when card was riviewed
-  # def arrange_review_date
-  #   update_attribute(:review_date, 3.days.from_now)
-  # end
-
   # remove leading and trailing spaces, case insensitive,
-  # compare translation with original text returns true or false
+  # compare translation with original text
   def check_translation(translation)
     original_text.casecmp(translation.strip).zero?
   end
