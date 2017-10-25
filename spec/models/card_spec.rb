@@ -35,7 +35,7 @@ RSpec.describe Card, type: :model do
     let!(:user) { create(:user) }
     let!(:deck) { create(:deck, user: user) }
     let!(:card) { create(:card, deck: deck) }
-    it 'increases wrong gues value' do
+    it 'increases wrong guess value' do
       3.times { card.wrong_guess_counter }
       expect(card.wrong_guess).to eql(3)
     end
@@ -48,7 +48,7 @@ RSpec.describe Card, type: :model do
     before(:each) do
       card.update_attribute(:box, 2)
     end
-    it 'increase box number' do
+    it 'increases box number' do
       card.forward_review_date
       expect(card.box).to eql(3)
     end
@@ -75,7 +75,7 @@ RSpec.describe Card, type: :model do
     before(:each) do
       card.update_attribute(:box, 3)
     end
-    it 'decrease box number' do
+    it 'decreases box number' do
       card.backward_review_date
       expect(card.box).to eql(2)
     end
