@@ -6,7 +6,7 @@ class DecksController < ApplicationController
   end
 
   def show
-    @cards = @deck.cards
+    @cards = @deck.cards.latest
     @number = @cards.count
   end
 

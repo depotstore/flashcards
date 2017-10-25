@@ -18,6 +18,6 @@ rows.each do |e|
   card = decks[rand(0..2)].cards.create!(original_text: e.css('td')[2].content,
                                 translated_text: e.css('td')[1].content)
   random_date = rand(-3..3).days.from_now
-  card.update_attribute(:review_date, random_date)
+  card.update(review_date: random_date, box: rand(0..5))
   puts card.inspect
 end

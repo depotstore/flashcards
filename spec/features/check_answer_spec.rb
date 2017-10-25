@@ -6,7 +6,6 @@ describe 'checking answer' do
   let!(:card) { create(:card, deck: deck) }
 
   before(:each) do
-    card.update_attribute(:review_date, -3.days.from_now)
     login(user.email, '123')
   end
 
