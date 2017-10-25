@@ -14,8 +14,13 @@ class StaticPagesController < ApplicationController
     else
       flash[:danger] = 'Не правильно'
       @card.wrong_guess_counter
-      @card.backward_review_date if @card.wrong_guess == 3
-      render action: :home
+      if @card.wrong_guess == 3
+        @card.backward_review_date
+        flash[:danger] = 'More than 3 wrong guesses.'
+        redirect_to root_url
+      else
+        render action: :home
+      end
     end
   end
 end
