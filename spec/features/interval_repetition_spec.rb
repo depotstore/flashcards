@@ -27,13 +27,11 @@ describe 'interval repetition' do
   context 'checking translation of card that previously reviewed - wrong answer' do
     it 'decreases review_date to 3.days.from_now after 3 wrong guesses' do
       card.update_attribute(:box, 3)
-      puts card.inspect
       4.times do
         fill_in(:translation, with: 'wrong')
         click_button('Проверить')
       end
       card.reload
-      puts card.inspect
       expect(card.review_date.to_date).to eql 3.days.from_now.to_date
     end
   end
