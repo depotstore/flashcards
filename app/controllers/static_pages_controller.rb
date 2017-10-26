@@ -14,8 +14,7 @@ class StaticPagesController < ApplicationController
       @card.arrange_review_date(1)
       redirect_to root_url
     elsif @card.typo?(answer)
-      flash[:info] = "#{answer} was typed instead of "
-      flash[:info] += "#{@card.original_text} (#{@card.translated_text}). Please retype."
+      flash[:info] = "#{answer} was typed instead of #{@card.original_text} (#{@card.translated_text}). Please retype."
       render action: :home
     else
       flash[:danger] = 'Не правильно'
