@@ -98,4 +98,15 @@ RSpec.describe Card, type: :model do
       expect(card.review_date.to_formatted_s(:long)).to eql(12.hours.from_now.to_formatted_s(:long))
     end
   end
+  describe '#typo?' do
+    let!(:user) { create(:user) }
+    let!(:deck) { create(:deck, user: user) }
+    let!(:card) { create(:card, deck: deck) }
+    it 'returns true if typo' do
+      expect(card.typo?('pictuer')).to be true
+    end
+    it 'returns false if wrong answer' do
+      expect(card.typo?('wrong')).to be false
+    end
+  end
 end
