@@ -44,6 +44,7 @@ class DecksController < ApplicationController
   def select_current_deck
     current_user.assign_current_deck(params[:current_deck_id])
     flash[:success] = 'Deck was successfully changed.'
+    current_user.notify_about_overdue_cards #for testing
     redirect_to decks_path
   end
 
