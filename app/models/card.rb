@@ -15,6 +15,15 @@ class Card < ApplicationRecord
   scope :random_card, ->{ order("RANDOM()").first }
   mount_uploader :picture, PictureUploader
 
+# assumed that distance = 1 is typo, distance greater than 1 is wrong answer
+# only '<subst>' tag is typo
+# book -> boko, obok - are typos, booke, ook are wrong answers
+  def typo?(answer)
+    return false if DamerauLevenshtein.distance(original_text, answer) > 1
+    differ = DamerauLevenshtein::Differ.new
+    differ.run(original_text, answer)[0].include?('<subst>')
+  end
+
 # collection of review dates for each box, index of array equals to box number
   def review_dates
     [Date.today, 12.hours.from_now, 3.days.from_now,
