@@ -18,8 +18,8 @@ class User < ApplicationRecord
   end
 
   def self.notify_users_with_pending_cards
-    select { |user| user.cards.review_date_over.present? }.each do |user|
-      NotificationsMailer.pending_cards(user).deliver_now
+    all.each do |user|
+      NotificationsMailer.pending_cards(user).deliver! if user.cards.review_date_over.present?
     end
   end
 end
