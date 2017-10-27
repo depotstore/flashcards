@@ -1,12 +1,9 @@
 class NotificationsMailer < ApplicationMailer
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.notifications_mailer.pending_cards.subject
-  #
   def pending_cards(user)
-    @greeting = "Hi, you have #{user.cards.review_date_over.count} overdue cards!"
-    mail to: user.email
+    number = user.cards.review_date_over.count
+    word = 'card'.pluralize(number)
+    @message = "Hi, you have #{number} overdue #{word}!"
+    mail(to: user.email, subject: "overdue #{word}")
   end
 end
