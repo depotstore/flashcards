@@ -19,7 +19,7 @@ class User < ApplicationRecord
 
   def self.notify_users_with_pending_cards
     all.each do |user|
-      NotificationsMailer.pending_cards(user).deliver! if user.cards.review_date_over.present?
+      NotificationsMailer.pending_cards(user).deliver_now if user.cards.review_date_over.present?
     end
   end
 end
