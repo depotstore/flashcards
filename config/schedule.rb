@@ -17,7 +17,7 @@
 #   runner "AnotherModel.prune_old_records"
 # end
 
-every 2.minutes do
+every 1.day do
   runner "User.notify_users_with_pending_cards"
 end
 
