@@ -2,12 +2,12 @@ require "rails_helper"
 
 RSpec.describe NotificationsMailer, type: :mailer do
   describe "pending_cards" do
-    let(:mail) { NotificationsMailer.pending_cards }
+    let(:user) { create(:user) }
+    let(:mail) { NotificationsMailer.pending_cards(user) }
 
     it "renders the headers" do
-      expect(mail.subject).to eq("Pending cards")
-      expect(mail.to).to eq(["to@example.org"])
-      expect(mail.from).to eq(["from@example.com"])
+      expect(mail.to).to eq([user.email])
+      expect(mail.from).to eq(["noreplay@.flashcards.com"])
     end
 
     it "renders the body" do
