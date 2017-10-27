@@ -7,7 +7,7 @@ RSpec.describe NotificationsMailer, type: :mailer do
 
     it "renders the headers" do
       expect(mail.to).to eq([user.email])
-      expect(mail.from).to eq(["noreplay@.flashcards.com"])
+      expect(mail.from).to eq(["from@example.com"])
     end
 
     it "renders the body" do
