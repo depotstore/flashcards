@@ -26,7 +26,7 @@ class CardsController < ApplicationController
 
   def update
     if @card.update(card_params)
-      flash[:success] = t('cards.update.success')
+      flash[:success] = t('.success')
       redirect_to cards_path
     else
       flash[:danger] = t('.danger')
