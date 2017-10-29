@@ -9,7 +9,7 @@
     </tr>
     <tr>
       <td>
-        <%= @card.picture.present? ? image_tag(@card.picture.url) : 'no picture' %>
+        <%= @card.picture.present? ? image_tag(@card.picture.url) : t('.no_picture') %>
       </td>
     </tr>
     <tr>
@@ -22,11 +22,11 @@
   <%= hidden_field_tag :checked_card_id, @card.id %>
 
   <p class="form-group">
-    <%= label_tag :translation %>
+    <%= label_tag t('.translation') %>
     <%= text_field_tag :translation, nil, class: 'form-control' %>
   </p>
 
   <p class="form-group">
-    <%= submit_tag 'Проверить', class: 'bth btn-primary form-control' %>
+    <%= submit_tag t('.check'), class: 'bth btn-primary form-control' %>
   </p>
 <% end %>

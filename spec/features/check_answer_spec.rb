@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 describe 'checking answer' do
-  let!(:user) { create(:user) }
+  let!(:user) { create(:user, language: 'ru') }
   let!(:deck) { create(:deck, user: user) }
   let!(:card) { create(:card, deck: deck) }
 
   before(:each) do
-    login(user.email, '123')
+    login(user.email, '123', 'ru')
   end
 
   context 'looking at the card for review' do

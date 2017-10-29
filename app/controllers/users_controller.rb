@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
        auto_login @user
-       flash[:success] = 'Account was successfully created.'
+       flash[:success] = t('.success')
        redirect_to root_url
      else
        render :new
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      flash[:success] = 'Account was successfully updated.'
+      flash[:success] = t('.success')
       redirect_to @user
     else
       render :edit
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    flash[:success] = 'Account was successfully destroyed.'
+    flash[:success] = t('.success')
     redirect_to root_url
   end
 
@@ -43,6 +43,6 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:email, :password, :password_confirmation,
-        :authentications_attribute, :current_deck_id)
+        :authentications_attribute, :current_deck_id, :language)
     end
 end

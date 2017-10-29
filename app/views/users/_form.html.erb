@@ -25,6 +25,10 @@
   </div>
   <br>
   <div class="form-group">
-    <%= f.submit 'Submit', class: 'bth btn-primary form-control'%>
+    <%= f.select :language,
+        options_for_select(I18n.available_locales, @user&.language) %>
+  </div>
+  <div class="form-group">
+    <%= f.submit class: 'bth btn-primary form-control'%>
   </div>
 <% end %>

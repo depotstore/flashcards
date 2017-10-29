@@ -10,14 +10,16 @@ class StaticPagesController < ApplicationController
     answer = params[:translation]
     @card = user_cards.find(params[:checked_card_id])
     if @card.check_translation(answer)
-      flash[:success] = 'Правильно'
+      flash[:success] = t('.right')
       @card.arrange_review_date(1)
       redirect_to root_url
     elsif @card.typo?(answer)
-      flash[:info] = "#{answer} was typed instead of #{@card.original_text} (#{@card.translated_text}). Please retype."
+      flash[:info] = t('.typo_info', answer: answer,
+                        original_text: @card.original_text,
+                        translated_text: @card.translated_text)
       render action: :home
     else
-      flash[:danger] = 'Не правильно'
+      flash[:danger] = t('.wrong')
       @card.wrong_guess_counter
       check_wrong_guesses_number(@card.wrong_guess)
     end
@@ -28,7 +30,7 @@ class StaticPagesController < ApplicationController
   def check_wrong_guesses_number(wrong_guess)
     return render action: :home if wrong_guess <= 3
     @card.arrange_review_date(-1)
-    flash[:danger] = 'More than 3 wrong guesses.'
+    flash[:danger] = t('.limit')
     redirect_to root_url
   end
 end

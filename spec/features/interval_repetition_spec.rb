@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 describe 'interval repetition' do
-  let!(:user) { create(:user) }
+  let!(:user) { create(:user, language: 'ru') }
   let!(:deck) { create(:deck, user: user) }
   let!(:card) { create(:card, deck: deck) }
   before(:each) do
-    login(user.email, '123')
+    login(user.email, '123', 'ru')
   end
   context 'checking translation of new card - right answer' do
     it 'increases review_date to 12.hours.from_now' do
@@ -32,8 +32,7 @@ describe 'interval repetition' do
         click_button('Проверить')
         card.reload
       end
-      # expect(card.review_date.to_date).to eql 3.days.from_now.to_date
-      expect(card.box).to eql 2
+      expect(card.review_date.to_date).to eql 3.days.from_now.to_date
     end
   end
   context 'checking translation of card that previously reviewed - wrong answer' do

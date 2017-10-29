@@ -246,6 +246,7 @@ GEM
       activesupport (>= 4.2.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
+    http_accept_language (2.1.1)
     i18n (0.9.0)
       concurrent-ruby (~> 1.0)
     inflecto (0.0.2)
@@ -359,7 +360,7 @@ GEM
     rspec-support (3.7.0)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
-    sass (3.5.2)
+    sass (3.5.3)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -429,6 +430,7 @@ DEPENDENCIES
   dotenv-rails
   factory_girl_rails (~> 4.0)
   fog
+  http_accept_language
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)

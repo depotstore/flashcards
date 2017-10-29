@@ -7,17 +7,17 @@ class UserSessionsController < ApplicationController
 
   def create
     if @user = login(params[:email], params[:password])
-      flash[:success] = 'Login successfully'
+      flash[:success] = t('.success')
       redirect_back_or_to root_url
     else
-      flash.now[:danger] = 'Login failed'
+      flash.now[:danger] = t('.danger')
       render action: :new
     end
   end
 
   def destroy
     logout
-    flash[:success] = 'Logged out!'
+    flash[:success] = t('.success')
     redirect_to root_url
   end
 end

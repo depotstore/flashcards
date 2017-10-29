@@ -5,9 +5,9 @@ describe 'creating card with picture' do
   let!(:deck) { create(:deck, user: user) }
 
   before(:each) do
-    login(user.email, '123')
+    login(user.email, '123', 'en')
     user.assign_current_deck(deck.id)
-    click_link 'Добавить карточку'
+    click_link 'Add a card'
     fill_in('card[original_text]', with: 'test')
     fill_in('card[translated_text]', with: 'тест')
   end
@@ -19,16 +19,16 @@ describe 'creating card with picture' do
     end
 
     it 'has notification' do
-      click_button 'Create flashcard'
-      expect(page).to have_content 'Card created.'
+      click_button 'Create Card'
+      expect(page).to have_content 'Card created'
     end
 
     it 'creates card' do
-      expect { click_button 'Create flashcard' }.to change(Card, :count).by(1)
+      expect { click_button 'Create Card' }.to change(Card, :count).by(1)
     end
 
     it 'has picture' do
-      click_button 'Create flashcard'
+      click_button 'Create Card'
       expect(page.find('img')['src']).to have_content 'rectangle.png'
     end
   end
@@ -39,16 +39,16 @@ describe 'creating card with picture' do
     end
 
     it 'has notification' do
-      click_button 'Create flashcard'
-      expect(page).to have_content 'Card created.'
+      click_button 'Create Card'
+      expect(page).to have_content 'Card created'
     end
 
     it 'creates card' do
-      expect { click_button 'Create flashcard' }.to change(Card, :count).by(1)
+      expect { click_button 'Create Card' }.to change(Card, :count).by(1)
     end
 
     it 'has picture' do
-      click_button 'Create flashcard'
+      click_button 'Create Card'
       expect(page.find('img')['src']).to have_content 'square.png'
     end
   end

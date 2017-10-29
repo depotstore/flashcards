@@ -14,10 +14,10 @@ class CardsController < ApplicationController
     selected_deck = current_user.decks.find(params[:card][:deck_id])
     @card = selected_deck.cards.build(card_params)
     if @card.save
-      flash[:success] = 'Card created.'
+      flash[:success] = t('.success')
       redirect_to cards_path
     else
-      flash_danger
+      flash[:danger] = t('.danger')
       render 'new'
     end
   end
@@ -26,17 +26,17 @@ class CardsController < ApplicationController
 
   def update
     if @card.update(card_params)
-      flash[:success] = 'Card updated.'
+      flash[:success] = t('cards.update.success')
       redirect_to cards_path
     else
-      flash_danger
+      flash[:danger] = t('.danger')
       render 'edit'
     end
   end
 
   def destroy
     @card.destroy
-    flash[:success] = 'Card deleted.'
+    flash[:success] = t('.success')
     redirect_to cards_path
   end
 
@@ -50,9 +50,5 @@ class CardsController < ApplicationController
 
   def set_card
     @card = Card.find(params[:id])
-  end
-
-  def flash_danger
-    flash[:danger] = 'Something wrong.'
   end
 end

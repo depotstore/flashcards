@@ -21,6 +21,7 @@ gem 'fog'
 gem 'jquery-rails'
 gem 'damerau-levenshtein'
 gem 'whenever', :require => false
+gem 'http_accept_language'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
