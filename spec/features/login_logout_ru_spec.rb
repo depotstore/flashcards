@@ -9,11 +9,11 @@ describe 'user login and logout russian' do
     end
     it 'does not have access to create new deck' do
       visit new_deck_path(locale: 'ru')
-      expect(page).not_to have_button 'Создать колоду'
+      expect(page).not_to have_button t(submit_create, model: t(model_deck_ru))
     end
 
     it 'does not have access to edit profile' do
-      expect(page).not_to have_content('Настройки')
+      expect(page).not_to have_content t('users.edit.edit_profile')
     end
   end
 
@@ -27,23 +27,23 @@ describe 'user login and logout russian' do
 
     it 'has access to create new deck' do
       visit new_deck_path(locale: 'ru')
-      expect(page).to have_button 'Создать Колода'
+      expect(page).to have_button t(submit_create, model: t(model_deck_ru))
     end
 
     it 'has access to edit profile' do
-      click_link 'Настройки'
-      expect(page).to have_content('Настройки', count: 2)
+      click_link t('users.edit.edit_profile')
+      expect(page).to have_content(t('users.edit.edit_profile'), count: 2)
     end
 
     it 'does not have access to create new card after logout' do
       click_link 'Выйти'
       visit new_card_path(locale: 'ru')
-      expect(page).not_to have_button 'Создать Карта'
+      expect(page).not_to have_button t(submit_create, model: t(model_card_ru))
     end
 
     it 'does not have access to edit profile after logout' do
       click_link 'Выйти'
-      expect(page).not_to have_content('Настройки')
+      expect(page).not_to have_content t('users.edit.edit_profile')
     end
   end
 end

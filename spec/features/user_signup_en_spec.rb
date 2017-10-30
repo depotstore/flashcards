@@ -9,26 +9,28 @@ describe 'user signup english' do
     fill_in 'user[password]', with: '123'
     fill_in 'user[password_confirmation]', with: '123'
     select('en', from: 'user[language]')
-    click_button 'Sign Up'
+    click_button t("helpers.submit.user.create")
   end
 
   it 'gets informed about account creation' do
-    expect(page).to have_content 'Account was successfully created.'
+    expect(page).to have_content t("users.create.success")
   end
 
   context 'after signup user is logged in' do
     it 'has access to check translation' do
-      expect(page).to have_content 'No cards for reivew.'
+      expect(page).to have_content t("static_pages.home.no_cards")
     end
 
     it 'has access to all cards' do
-      click_link 'All cards'
-      expect(page).to have_content('All cards', count: 2)
+      all_cards = t('layouts.application.all_cards')
+      click_link all_cards
+      expect(page).to have_content(all_cards, count: 2)
     end
 
     it 'has access to edit profile' do
-      click_link 'Edit Profile'
-      expect(page).to have_content('Edit Profile', count: 2)
+      edit_profile = t('users.edit.edit_profile')
+      click_link edit_profile
+      expect(page).to have_content(edit_profile, count: 2)
     end
   end
 end
