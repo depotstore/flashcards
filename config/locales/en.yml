@@ -4,11 +4,11 @@
 #
 # To use the locales, use `I18n.t`:
 #
-#     I18n.t 'hello'
+#     I18n.t  hello
 #
 # In views, this is aliased to just `t`:
 #
-#     <%= t('hello') %>
+#     <%= t( hello ) %>
 #
 # To use a different locale, set it with `I18n.locale`:
 #
@@ -24,10 +24,74 @@
 # Instead, surround them with single quotes.
 #
 # en:
-#   'true': 'foo'
+#    true :  foo
 #
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  helpers:
+    submit:
+      user:
+        create: Sign Up
+        update: Save
+  login: Login
+  login_gb: Login with GitHub
+  layouts:
+    application:
+      flashcardchecker: Flashcard manager
+      all_cards: All cards
+      add_card: Add a card
+      home: Home
+      edit: Edit Profile
+      logout: Logout
+      decks: Decks
+      signup: Sign Up
+  cards:
+    create:
+      success: Card created
+      danger: Something wrong during creating
+    update:
+      success: Card updated
+      danger: Something wrong during updating
+    destroy:
+      success: Card deleted
+    index:
+      all_cards: All cards
+      you_have: You have
+      overdue_cards:
+        one: overdue card
+        other:  %{count} overdue cards
+  static_pages:
+    check_answer:
+      right: Right
+      wrong: Wrong
+      limit: More than 3 wrong guesses
+      typo_info: ! "%{answer} was typed instead of %{original_text} (%{translated_text}). Please retype."
+    home:
+      statement: This is the first in the world convenient manager for flashcards. That's it.
+      no_cards: No cards for reivew.
+    reviewed_card:
+      translation: Translation
+      check: Check
+      no_picture: no picture
+  user_sessions:
+    create:
+      success: Login successfully
+      danger: Login failed
+    destroy:
+      success: Logged out!
+    form:
+      login_statement: Please login or
+      signup_lowcase: sign up
+  users:
+    edit:
+      edit_profile: Edit Profile
+    new:
+      signup: Sign Up
+    create:
+      success: Account was successfully created.
+    update:
+      success: Account was successfully updated.
+    destroy:
+      success: Account was successfully destroyed.

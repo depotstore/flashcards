@@ -1,0 +1,78 @@
+ru:
+  helpers:
+    submit:
+      create: "Создать %{model}"
+      new: "Создать %{model}"
+      update: "Обновить %{model}"
+      edit: "Обновить %{model}"
+      user:
+        create: Зарегистрироваться
+        update: Сохранить
+  activerecord:
+    models:
+      deck:
+        one: Колода
+        other: Колоды
+      card:
+        one: Карта
+        other: Карты
+  login: Войти
+  login_gb: Войти через GitHub
+  layouts:
+    application:
+      flashcardchecker: Флэшкарточкер
+      all_cards: Все карточки
+      add_card: Добавить карточку
+      home: Главная
+      edit: Настройки
+      logout: Выйти
+      decks: Колоды
+      signup: Зарегистрироваться
+  cards:
+    create:
+      success: Карточка создана
+      danger: Есть ошибки при создании
+    update:
+      success: Карточка обновлена
+      danger: Есть ошибки при обновлении
+    destroy:
+      success: Карточка удалена
+    index:
+      all_cards: Все карточки
+      you_have: У вас
+      overdue_cards:
+        one: просроченная карточка
+        other:  %{count} просроченных карточек
+  static_pages:
+    check_answer:
+      right: Правильно
+      wrong: Не правильно
+      limit: Более 3 неправильных ответов
+      typo_info: ! "%{answer} было введено вместо %{original_text} (%{translated_text}). Пожалуйста ввидите снова."
+    home:
+      statement: Первый в мире удобный менеджер флеш-карточек. Именно так.
+      no_cards: Нет карточек для ревью.
+    reviewed_card:
+      translation: Перевод
+      check: Проверить
+      no_picture: нет картинки
+  user_sessions:
+    create:
+      success: Вход в систему!
+      danger: Неверный адрес эл. почты или пароль.
+    destroy:
+      success: Выход из системы выполнен.
+    form:
+      login_statement: Пожалуйста введите пароль или
+      signup_lowcase: зарегистрируйтесь
+  users:
+    edit:
+      edit_profile: Настройки
+    new:
+      signup: Регистрация
+    create:
+      success: Аккаунт был успешно создан.
+    update:
+      success: Аккаунт был успешно обновлен.
+    destroy:
+      success: Аккаунт был успешно удален.

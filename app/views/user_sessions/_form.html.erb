@@ -1,4 +1,4 @@
-<h3>Please login or  <%= link_to 'sign up', signup_path %></h3>
+<h3><%= t('.login_statement') %> <%= link_to t('.signup_lowcase'), signup_path %></h3>
 <%= form_tag(user_sessions_path, method: :post) do %>
   <div class='form-group'>
     <%= label_tag :email %><br />
@@ -9,11 +9,11 @@
     <%= password_field_tag :password, nil, class: 'form-control' %>
   </div><br>
   <div class='form-group'>
-    <%= submit_tag 'Login', class: 'btn btn-primary form-control' %>
+    <%= submit_tag t(:login), class: 'btn btn-primary form-control' %>
   </div>
 <% end %>
 <p style="text-align: center;">or</p>
 <p>
-<%= link_to 'Login with GitHub', auth_at_provider_path(provider: :github),
+<%= link_to t(:login_gb), auth_at_provider_path(provider: :github),
         class: "btn btn-primary form-control", style: "background-color:#444;" %>
 </p>

@@ -17,8 +17,8 @@ describe 'profile of another user' do
   end
   context 'access to cards (user)' do
     before(:each) do
-      login(user.email, '123')
-      click_link 'Все карточки'
+      login(user.email, '123', 'en')
+      click_link 'All cards'
     end
     it 'has access to own cards' do
       expect(page).to have_content 'картинка'
@@ -30,8 +30,8 @@ describe 'profile of another user' do
 
   context 'access to cards (another_user)' do
     before(:each) do
-      login(another_user.email, '123')
-      click_link 'Все карточки'
+      login(another_user.email, '123', 'en')
+      click_link 'All cards'
     end
     it 'has access to own cards' do
       expect(page).to have_content 'тест'

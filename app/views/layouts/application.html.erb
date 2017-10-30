@@ -3,6 +3,8 @@
   <head>
     <title>Флэшкарточкер</title>
     <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
@@ -11,9 +13,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
      integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
       crossorigin="anonymous"></script>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
   </head>
 
   <body>
@@ -24,24 +25,36 @@
         </div>
         <ul class="nav navbar-nav">
           <li class="<%= 'active' if controller.action_name == 'home' %>">
-            <%= link_to 'Home', root_path %>
+            <%= link_to t('.home'), root_path %>
           </li>
           <% if current_user %>
-            <li><%= link_to "Edit Profile", edit_user_path(current_user.id) %></li>
-            <li><%= link_to "Logout", :logout, method: :post %></li>
-            <li><%= link_to "Decks", decks_path %></li>
+            <li><%= link_to t('.edit'), edit_user_path(current_user.id) %></li>
+            <li><%= link_to t('.logout'), :logout, method: :post %></li>
+            <li><%= link_to t('.decks'), decks_path %></li>
             <% if current_deck %>
               <li><%= link_to(current_deck_name, deck_path(current_deck))%></li>
             <% end %>
           <% else %>
-            <li><%= link_to "Sign Up", :signup %></li>
-            <li><%= link_to "Login", :login %></li>
+            <li><%= link_to t('.signup'), :signup %></li>
+            <li><%= link_to t(:login), :login %></li>
             <li>
-              <%= link_to 'Login with GitHub',
+              <%= link_to t(:login_gb),
                   auth_at_provider_path(provider: :github) %>
             </li>
           <% end %>
         </ul>
+        <div >
+          <ul class="nav navbar-nav pull-right">
+            <% I18n.available_locales.each do |locale| %>
+              <% if current_user %>
+                <li><%= link_to locale, user_path(current_user, user: { language: locale }),
+                        method: :put, style: underline(locale) %></li>
+              <% else %>
+                <li><%= link_to locale, { locale: locale },  style: underline(locale) %></li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </nav>
 
@@ -50,12 +63,12 @@
         <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
       <% end %>
       <header class="clearfix" >
-        <h1>Флэшкарточкер</h1>
+        <h1><%= t('.flashcardchecker') %></h1>
         <% if current_user %>
         <ul class="navigation-links">
-          <li><%= link_to 'Все карточки', cards_path %></li>
+          <li><%= link_to t('.all_cards'), cards_path %></li>
           <li>
-            <%= link_to 'Добавить карточку', new_card_path %>
+            <%= link_to t('.add_card'), new_card_path %>
           </li>
         </ul>
         <% end %>

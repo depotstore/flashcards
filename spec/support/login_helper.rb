@@ -1,9 +1,10 @@
 module LoginHelper
-  def login(email, password)
+  def login(email, password, language)
     visit root_path
+    click_link language
     fill_in :email, with: email
     fill_in :password, with: password
-    click_button 'Login'
+    language.eql?('en') ? click_button('Login') : click_button('Войти')
   end
 end
 

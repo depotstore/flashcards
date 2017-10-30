@@ -1,10 +1,10 @@
 <p style="font-size: 22px;">
-  Первый в мире удобный менеджер флеш-карточек. Именно так.
+  <%= t('.statement')%>
 </p>
 <% if @card.present? %>
   <%= render 'reviewed_card' %>
 <% elsif current_user %>
-  <h2>No cards for reivew.</h2>
+  <h2><%= t('.no_cards')%></h2>
 <% else %>
   <%= render 'user_sessions/form' %>
 <% end %>

@@ -15,4 +15,8 @@ module ApplicationHelper
   def current_deck_name
     current_deck&.name
   end
+
+  def underline(locale)
+    'text-decoration: underline;' if locale == I18n.locale
+  end
 end
