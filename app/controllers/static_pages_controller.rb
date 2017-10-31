@@ -11,7 +11,7 @@ class StaticPagesController < ApplicationController
     @card = user_cards.find(params[:checked_card_id])
     if @card.check_translation(answer)
       flash[:success] = t('.right')
-      @card.arrange_review_date(1)
+      SuperMemo2.new(@card, params[:quality]).arrange_review_date
       redirect_to root_url
     elsif @card.typo?(answer)
       flash[:info] = t('.typo_info', answer: answer,
@@ -21,15 +21,16 @@ class StaticPagesController < ApplicationController
     else
       flash[:danger] = t('.wrong')
       @card.wrong_guess_counter
-      check_wrong_guesses_number(@card.wrong_guess)
+      check_wrong_guesses_number(@card)
     end
   end
 
   private
 
-  def check_wrong_guesses_number(wrong_guess)
-    return render action: :home if wrong_guess <= 3
-    @card.arrange_review_date(-1)
+  def check_wrong_guesses_number(card)
+    return render action: :home if card.wrong_guess <= 3
+    # quality = 0, after 3 wrong guesses
+    SuperMemo2.new(card, 0).arrange_review_date
     flash[:danger] = t('.limit')
     redirect_to root_url
   end

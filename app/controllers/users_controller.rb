@@ -23,8 +23,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      flash[:success] = t('.success')
-      redirect_to @user
+      redirect_back fallback_location: @user
     else
       render :edit
     end

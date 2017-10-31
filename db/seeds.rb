@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
+require "#{Rails.root}/app/services/super_memo2"
 
 address = 'http://1000mostcommonwords.com/1000-most-common-russian-words/'
 page = Nokogiri::HTML(open(address))
@@ -17,7 +18,8 @@ decks = (1..3).map { |i| users[1].decks.create(name: "deck_#{i}") }
 rows.each do |e|
   card = decks[rand(0..2)].cards.create!(original_text: e.css('td')[2].content,
                                 translated_text: e.css('td')[1].content)
+  rand(1..10).times { SuperMemo2.new(card, rand(0..5)).arrange_review_date }
   random_date = rand(-3..3).days.from_now
-  card.update(review_date: random_date, box: rand(0..5))
+  card.update(review_date: random_date)
   puts card.inspect
 end
