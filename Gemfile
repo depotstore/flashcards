@@ -22,6 +22,7 @@ gem 'jquery-rails'
 gem 'damerau-levenshtein'
 gem 'whenever', :require => false
 gem 'http_accept_language'
+gem 'rollbar'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
