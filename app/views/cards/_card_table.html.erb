@@ -5,7 +5,7 @@
     <th>Translated</th>
     <th>Review</th>
     <th>Deck Name</th>
-    <th>Box</th>
+    <th>Repetition</th>
     <th colspan="2"></th>
   </tr>
   <% @cards.each do |card| %>
@@ -17,7 +17,7 @@
       <td><%= card.translated_text %></td>
       <td><%= card.review_date.strftime("%d %m %Y")  if card.review_date %></td>
       <td><%= card.deck.name %></td>
-      <td><%= card.box %></td>
+      <td><%= card.repetition %></td>
       <td><%= link_to 'edit', edit_card_path(card) %></td>
       <td><%= link_to 'destroy', card_path(card), method: :delete,
                                  data: { confirm: 'Are you sure?' }%></td>

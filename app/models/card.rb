@@ -4,8 +4,8 @@ class Card < ApplicationRecord
   before_validation(on: :create) { self.review_date = Date.today }
 
   validates :original_text, :translated_text, :review_date, presence: true
-  validates :box, numericality: { greater_than_or_equal_to: 0,
-                                  less_than_or_equal_to: 5 }
+  validates :ef, numericality: { greater_than_or_equal_to: 1.3,
+                                  less_than_or_equal_to: 2.5 }
   validates :wrong_guess, numericality: { greater_than_or_equal_to: 0,
                                           less_than_or_equal_to: 3 }
   validate :not_the_same
@@ -22,21 +22,6 @@ class Card < ApplicationRecord
     return false if DamerauLevenshtein.distance(original_text, answer) > 1
     differ = DamerauLevenshtein::Differ.new
     differ.run(original_text, answer)[0].include?('<subst>')
-  end
-
-# collection of review dates for each box, index of array equals to box number
-  def review_dates
-    [Date.today, 12.hours.from_now, 3.days.from_now,
-    1.week.from_now, 2.weeks.from_now, 1.month.from_now]
-  end
-
-# forward review date if change = 1, backward review date if change = -1
-  def arrange_review_date(change)
-    self.box += change
-    self.box = 5 if box > 5
-    self.box = 1 if box < 1
-    self.wrong_guess = 0 if change.negative?
-    update(box: box, review_date: review_dates[box])
   end
 
 # update wrong_guess value by one

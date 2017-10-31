@@ -20,7 +20,15 @@
 <%= form_tag(controller: 'static_pages', action: 'check_answer') do %>
 
   <%= hidden_field_tag :checked_card_id, @card.id %>
+  <p class="form-group">
+    <%= label_tag 'quality' %>
+    <% if @card.wrong_guess.zero? %>
+      <%= select_tag 'quality', options_for_select(positive_grade_scale)  %>
+    <% else %>
+      <%= select_tag 'quality', options_for_select(negative_grade_scale)  %>
+    <% end %>
 
+  </p>
   <p class="form-group">
     <%= label_tag t('.translation') %>
     <%= text_field_tag :translation, nil, class: 'form-control' %>
@@ -30,3 +38,4 @@
     <%= submit_tag t('.check'), class: 'bth btn-primary form-control' %>
   </p>
 <% end %>
+<%= @card.inspect %>

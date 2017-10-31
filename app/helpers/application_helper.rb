@@ -19,4 +19,23 @@ module ApplicationHelper
   def underline(locale)
     'text-decoration: underline;' if locale == I18n.locale
   end
+
+  # 5 - perfect response
+  # 4 - correct response after a hesitation
+  # 3 - correct response recalled with serious difficulty
+  # after first wrong answer only this
+  # 2 - incorrect response; where the correct one seemed easy to recall
+  # 1 - incorrect response; the correct one remembered
+
+  def positive_grade_scale
+    [['perfect response', 5],
+      ['correct response after a hesitation', 4],
+      ['correct response recalled with serious difficulty', 3]]
+  end
+
+  def negative_grade_scale
+    [['incorrect response; where the correct one seemed easy to recall', 2],
+     ['incorrect response; the correct one remembered', 1]]
+  end
+
 end

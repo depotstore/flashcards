@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171028175037) do
+ActiveRecord::Schema.define(version: 20171031024112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,8 +33,10 @@ ActiveRecord::Schema.define(version: 20171028175037) do
     t.bigint "user_id"
     t.string "picture"
     t.bigint "deck_id"
-    t.integer "box", default: 0
     t.integer "wrong_guess", default: 0
+    t.decimal "ef", precision: 4, scale: 3, default: "2.5"
+    t.integer "repetition", default: 0
+    t.integer "interval", default: 0
     t.index ["deck_id"], name: "index_cards_on_deck_id"
     t.index ["user_id"], name: "index_cards_on_user_id"
   end
